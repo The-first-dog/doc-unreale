@@ -110,3 +110,108 @@ Jeu d'exploration / horreur type Backrooms-like, développé sur Unreal Engine. 
 5. 03_Input/30_Enhanced_Input
 6. 04_Assets_Fab/44_Migrating_Assets
 7. 06_AI_NavMesh/61_Basic_Navigation_NavMesh
+
+
+## Deuxième vague de docs ajoutées
+
+### 09_Gameplay_Core
+- **90_Gameplay_Framework.html**
+  - *Chemin :* _AI_REFERENCE/09_Gameplay_Core/90_Gameplay_Framework.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/gameplay-framework-in-unreal-engine
+  - *Rôle :* Comprendre les bases d’un projet Unreal : GameMode, Pawn, Character, PlayerController, Actor, etc.
+- **91_Components.html**
+  - *Chemin :* _AI_REFERENCE/09_Gameplay_Core/91_Components.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/components-in-unreal-engine
+  - *Rôle :* Comprendre les composants Unreal : mesh, collision, audio, caméra, lumière, etc.
+- **92_Collision_Overview.html**
+  - *Chemin :* _AI_REFERENCE/09_Gameplay_Core/92_Collision_Overview.html
+  - *Source URL :* https://dev.epicgames.com/documentation/en-us/unreal-engine/collision-in-unreal-engine---overview
+  - *Rôle :* Gérer les collisions, overlaps, triggers, portes, murs, objets interactifs.
+- **93_Traces_Overview.html**
+  - *Chemin :* _AI_REFERENCE/09_Gameplay_Core/93_Traces_Overview.html
+  - *Source URL :* https://dev.epicgames.com/documentation/en-us/unreal-engine/traces-in-unreal-engine---overview
+  - *Rôle :* Comprendre les raycasts / line traces pour détecter ce que le joueur regarde et créer une interaction avec la touche E.
+
+### 10_Blueprint_Patterns
+- **100_Blueprint_Communication_Usage.html**
+  - *Chemin :* _AI_REFERENCE/10_Blueprint_Patterns/100_Blueprint_Communication_Usage.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/blueprint-communication-usage-in-unreal-engine
+  - *Rôle :* Comprendre comment faire communiquer plusieurs Blueprints : joueur, portes, interrupteurs, lumières, objets.
+- **101_Blueprint_Interface.html**
+  - *Chemin :* _AI_REFERENCE/10_Blueprint_Patterns/101_Blueprint_Interface.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/blueprint-interface-in-unreal-engine
+  - *Rôle :* Créer une interface d’interaction propre, par exemple "BPI_Interactable", pour que la touche E fonctionne sur portes, objets, boutons, tiroirs, etc.
+- **102_Timelines.html**
+  - *Chemin :* _AI_REFERENCE/10_Blueprint_Patterns/102_Timelines.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/timelines-in-unreal-engine
+  - *Rôle :* Animer simplement des portes, lumières, sons, effets et mouvements dans Blueprint.
+- **103_Opening_Doors.html**
+  - *Chemin :* _AI_REFERENCE/10_Blueprint_Patterns/103_Opening_Doors.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/opening-doors-in-unreal-engine
+  - *Rôle :* Exemple concret pour créer une porte ouvrable avec Unreal.
+
+### 11_Level_Procedural
+- **110_PCG_Framework.html**
+  - *Chemin :* _AI_REFERENCE/11_Level_Procedural/110_PCG_Framework.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/procedural-content-generation-framework-in-unreal-engine
+  - *Rôle :* Comprendre le PCG pour créer plus tard des couloirs, salles ou props procéduraux.
+- **111_World_Partition.html**
+  - *Chemin :* _AI_REFERENCE/11_Level_Procedural/111_World_Partition.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/world-partition-in-unreal-engine
+  - *Rôle :* Comprendre comment Unreal gère les grands niveaux et le streaming de zones.
+- **112_Level_Instancing.html**
+  - *Chemin :* _AI_REFERENCE/11_Level_Procedural/112_Level_Instancing.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/level-instancing-in-unreal-engine
+  - *Rôle :* Créer des morceaux de niveau réutilisables : couloir, salle, escalier, zone spéciale, etc.
+
+### 12_Horror_Atmosphere
+- **120_Post_Process_Effects.html**
+  - *Chemin :* _AI_REFERENCE/12_Horror_Atmosphere/120_Post_Process_Effects.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/post-process-effects-in-unreal-engine
+  - *Rôle :* Créer une ambiance visuelle horreur : vignette, exposition, bloom, aberration chromatique, color grading.
+- **121_Exponential_Height_Fog.html**
+  - *Chemin :* _AI_REFERENCE/12_Horror_Atmosphere/121_Exponential_Height_Fog.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/exponential-height-fog-in-unreal-engine
+  - *Rôle :* Créer du brouillard et de la profondeur dans les couloirs.
+- **122_Fading_Lights.html**
+  - *Chemin :* _AI_REFERENCE/12_Horror_Atmosphere/122_Fading_Lights.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/fading-lights-in-unreal-engine
+  - *Rôle :* Exemple utile pour créer des lumières qui changent, s’éteignent ou clignotent avec Timeline/overlap.
+- **123_MetaSounds.html**
+  - *Chemin :* _AI_REFERENCE/12_Horror_Atmosphere/123_MetaSounds.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/metasounds-in-unreal-engine
+  - *Rôle :* Comprendre les sons procéduraux / dynamiques pour ambiance, bourdonnement de néons, sons étranges, etc.
+
+### 13_AI_Advanced
+- **130_AI_Perception.html**
+  - *Chemin :* _AI_REFERENCE/13_AI_Advanced/130_AI_Perception.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/ai-perception-in-unreal-engine
+  - *Rôle :* Faire une IA qui voit, entend ou détecte le joueur.
+- **131_Environment_Query_System.html**
+  - *Chemin :* _AI_REFERENCE/13_AI_Advanced/131_Environment_Query_System.html
+  - *Source URL :* https://dev.epicgames.com/documentation/unreal-engine/environment-query-system-in-unreal-engine
+  - *Rôle :* Permettre à l’IA de chercher des positions intéressantes : se cacher, chercher le joueur, trouver un chemin, choisir un endroit d’observation.
+
+### 14_Save_Debug
+- **140_Saving_Loading_Game.html**
+  - *Chemin :* _AI_REFERENCE/14_Save_Debug/140_Saving_Loading_Game.html
+  - *Source URL :* https://dev.epicgames.com/documentation/en-us/unreal-engine/saving-and-loading-your-game-in-unreal-engine
+  - *Rôle :* Créer plus tard un système de sauvegarde : progression, objets récupérés, portes ouvertes, checkpoints.
+
+## Docs à lire en priorité pour créer la première démo jouable
+
+1. 00_MCP_Codex/00_Unreal_MCP_Editor.html
+2. 01_Base_Unreal/10_First_Person_Template.html
+3. 02_Blueprints/20_Blueprints_Overview.html
+4. 03_Input/30_Enhanced_Input.html
+5. 09_Gameplay_Core/93_Traces_Overview.html
+6. 09_Gameplay_Core/92_Collision_Overview.html
+7. 10_Blueprint_Patterns/101_Blueprint_Interface.html
+8. 10_Blueprint_Patterns/100_Blueprint_Communication_Usage.html
+9. 10_Blueprint_Patterns/102_Timelines.html
+10. 10_Blueprint_Patterns/103_Opening_Doors.html
+11. 05_Level_Lighting/50_Lighting_Environment.html
+12. 12_Horror_Atmosphere/120_Post_Process_Effects.html
+13. 12_Horror_Atmosphere/121_Exponential_Height_Fog.html
+14. 06_AI_NavMesh/61_Basic_Navigation_NavMesh.html
+15. 13_AI_Advanced/130_AI_Perception.html
