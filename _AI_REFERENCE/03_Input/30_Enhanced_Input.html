@@ -1,0 +1,691 @@
+<!DOCTYPE html><html lang="en-US"><head><base href="/documentation/assets/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+
+      <title>Enhanced Input in Unreal Engine | Unreal Engine 5.8 Documentation | Epic Developer Community</title>
+
+  <meta name="description" content="An overview of the Enhanced Input Plugin in Unreal Engine" />
+  <meta property="og:site_name" content="Epic Games Developer" />
+  <meta property="og:description" content="An overview of the Enhanced Input Plugin in Unreal Engine" />
+  <meta property="og:title" content="Enhanced Input in Unreal Engine | Unreal Engine 5.8 Documentation | Epic Developer Community" />
+  <meta property="og:image" content="https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=en-us/unreal-engine/enhanced-input-in-unreal-engine&amp;application_version=5.8" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website"  />
+  <meta property="og:url" content="https://dev.epicgames.com/documentation/unreal-engine/enhanced-input-in-unreal-engine" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Enhanced Input in Unreal Engine | Unreal Engine 5.8 Documentation | Epic Developer Community" />
+  <meta name="twitter:image" content="https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=en-us/unreal-engine/enhanced-input-in-unreal-engine&amp;application_version=5.8" />
+  <meta name="twitter:description" content="An overview of the Enhanced Input Plugin in Unreal Engine" />
+  <meta name="twitter:site" content="@UnrealEngine" />
+
+  <link rel="canonical" href="https://dev.epicgames.com/documentation/unreal-engine/enhanced-input-in-unreal-engine?lang=en-US" />
+  <link rel="alternate" href="https://dev.epicgames.com/documentation/unreal-engine/enhanced-input-in-unreal-engine?lang=en-US" hreflang="en-US" />
+  <link rel="alternate" href="https://dev.epicgames.com/documentation/unreal-engine/enhanced-input-in-unreal-engine?lang=ja" hreflang="ja" />
+  <link rel="alternate" href="https://dev.epicgames.com/documentation/unreal-engine/enhanced-input-in-unreal-engine?lang=zh-CN" hreflang="zh-CN" />
+  <link rel="alternate" href="https://dev.epicgames.com/documentation/unreal-engine/enhanced-input-in-unreal-engine?lang=ko" hreflang="ko" />
+  <link rel="alternate" href="https://dev.epicgames.com/documentation/unreal-engine/enhanced-input-in-unreal-engine" hreflang="x-default" />
+
+
+
+    <link rel="icon" media="(prefers-color-scheme:light)" type="image/png" href="https://edc-cdn.net/assets/images/favicon-light.png">
+    <link rel="icon" media="(prefers-color-scheme:dark)" type="image/png" href="https://edc-cdn.net/assets/images/favicon-dark.png">
+
+
+  <link rel="stylesheet" href="styles.316703e934f08dac.css"><style ng-app-id="serverApp">[_nghost-serverApp-c1581645311]{--_scrollbar-track-thickness-px: var(--scrollbar-track-thickness, 7px);--_scrollbar-container-offset-px: var(--scrollbar-container-offset, 0px);--_scrollbar-total-thickness-px: calc(var(--_scrollbar-track-thickness-px) + var(--_scrollbar-container-offset-px) * 2);--_scrollbar-thumb-min-size: var(--scrollbar-thumb-min-size, 20);position:relative!important;box-sizing:border-box!important;padding:0!important;-webkit-overflow-scrolling:touch;will-change:scroll-position}[_nghost-serverApp-c1581645311]    >.ng-scroll-spacer{position:absolute;inset-block-start:0;inset-inline-start:0;width:calc(var(--_spacer-width) * 1px);height:calc(var(--_spacer-height) * 1px);min-width:100%;min-height:100%}[_nghost-serverApp-c1581645311]{scrollbar-width:none!important}[_nghost-serverApp-c1581645311]::-webkit-scrollbar{display:none!important}[_nghost-serverApp-c1581645311]{--_viewport-overflow: auto;--_scrollbar-content-width: fit-content;overflow:var(--_viewport-overflow)}[orientation=vertical][_nghost-serverApp-c1581645311]{--_viewport-overflow: hidden auto;--_scrollbar-content-width: unset}[orientation=horizontal][_nghost-serverApp-c1581645311]{--_viewport-overflow: auto hidden}[_nghost-serverApp-c1581645311]{--_vertical-inset-block-start: var(--_scrollbar-container-offset-px);--_vertical-inset-block-end: var(--_scrollbar-container-offset-px);--_horizontal-inline-start: var(--_scrollbar-container-offset-px);--_horizontal-inline-end: var(--_scrollbar-container-offset-px);--_scrollbar-grid-template: ". scrollbar-y" 1fr "scrollbar-x ." auto / 1fr auto;--_scrollbar-wrapper-y-start: initial;--_scrollbar-wrapper-y-end: 0;--_scrollbar-wrapper-x-top: initial;--_scrollbar-wrapper-x-bottom: 0}[position=invertY][_nghost-serverApp-c1581645311]{--_scrollbar-grid-template: "scrollbar-y ." 1fr ". scrollbar-x" auto / auto 1fr}[position=invertX][_nghost-serverApp-c1581645311]{--_scrollbar-grid-template: "scrollbar-x ." auto ". scrollbar-y" 1fr / 1fr auto}[position=invertAll][_nghost-serverApp-c1581645311]{--_scrollbar-grid-template: ". scrollbar-x" auto "scrollbar-y ." 1fr / auto 1fr }[_nghost-serverApp-c1581645311]{--_horizontal-block-start: initial;--_horizontal-block-end: var(--_scrollbar-container-offset-px)}[_nghost-serverApp-c1581645311]:is([position=invertX],[position=invertAll]){--_horizontal-block-start: var(--_scrollbar-container-offset-px);--_horizontal-block-end: initial;--_scrollbar-wrapper-x-top: 0;--_scrollbar-wrapper-x-bottom: initial}[_nghost-serverApp-c1581645311]{--_vertical-inset-inline-end: var(--_scrollbar-container-offset-px);--_vertical-inset-inline-start: initial}[_nghost-serverApp-c1581645311]:is([position=invertY],[position=invertAll]){--_vertical-inset-inline-start: var(--_scrollbar-container-offset-px);--_vertical-inset-inline-end: initial;--_scrollbar-wrapper-y-start: 0;--_scrollbar-wrapper-y-end: initial}[verticalUsed=true][horizontalUsed=true][_nghost-serverApp-c1581645311]{--_scrollbar-thickness-margin-px: calc(var(--_scrollbar-track-thickness-px) + var(--_scrollbar-container-offset-px) * 3)}[horizontalUsed=true][_nghost-serverApp-c1581645311]{--_vertical-inset-block-start: var(--_scrollbar-container-offset-px);--_vertical-inset-block-end: var(--_scrollbar-thickness-margin-px)}[horizontalUsed=true][_nghost-serverApp-c1581645311]:is([position=invertX],[position=invertAll]){--_vertical-inset-block-start: var(--_scrollbar-thickness-margin-px);--_vertical-inset-block-end: var(--_scrollbar-container-offset-px)}[verticalUsed=true][_nghost-serverApp-c1581645311]{--_horizontal-inline-start: var(--_scrollbar-container-offset-px);--_horizontal-inline-end: var(--_scrollbar-thickness-margin-px)}[verticalUsed=true][_nghost-serverApp-c1581645311]:is([position=invertY],[position=invertAll]){--_horizontal-inline-start: var(--_scrollbar-thickness-margin-px);--_horizontal-inline-end: var(--_scrollbar-container-offset-px)}[_nghost-serverApp-c1581645311]{--_viewport-padding-block-start: 0;--_viewport-padding-block-end: 0;--_viewport-padding-inline-start: 0;--_viewport-padding-inline-end: 0}[appearance=native][verticalUsed=true][_nghost-serverApp-c1581645311]{--_viewport-padding-inline-start: 0;--_viewport-padding-inline-end: var(--_scrollbar-total-thickness-px)}[appearance=native][verticalUsed=true][_nghost-serverApp-c1581645311]:is([position=invertY],[position=invertAll]){--_viewport-padding-inline-start: var(--_scrollbar-total-thickness-px);--_viewport-padding-inline-end: 0}[appearance=native][horizontalUsed=true][_nghost-serverApp-c1581645311]{--_viewport-padding-block-start: 0;--_viewport-padding-block-end: var(--_scrollbar-total-thickness-px)}[appearance=native][horizontalUsed=true][_nghost-serverApp-c1581645311]:is([position=invertX],[position=invertAll]){--_viewport-padding-block-start: var(--_scrollbar-total-thickness-px);--_viewport-padding-block-end: 0}[_nghost-serverApp-c1581645311]{--_horizontal-thumb-display: block;--_vertical-thumb-display: block}[isVerticallyScrollable=false][_nghost-serverApp-c1581645311]{--_vertical-thumb-display: none}[isHorizontallyScrollable=false][_nghost-serverApp-c1581645311]{--_horizontal-thumb-display: none}[visibility=hover][_nghost-serverApp-c1581645311]{--_scrollbar-hover-opacity: 0;--_scrollbar-opacity-transition: opacity var(--scrollbar-hover-opacity-transition-leave-duration, .4s) var(--scrollbar-hover-opacity-transition-leave-delay, 1s)}[visibility=hover][scrolling=true][_nghost-serverApp-c1581645311], [visibility=hover][_nghost-serverApp-c1581645311]:hover, [visibility=hover][_nghost-serverApp-c1581645311]:active, [visibility=hover][_nghost-serverApp-c1581645311]:focus{--_scrollbar-hover-opacity: 1;--_scrollbar-opacity-transition: opacity var(--scrollbar-hover-opacity-transition-enter-duration, 0)}[_nghost-serverApp-c1581645311]{--_viewport_scroll-timeline: unset;--_animation-timeline-y: unset;--_scrollbar-thumb-transform-from: unset;--_scrollbar-thumb-transform-to: unset}[verticalUsed=true][_nghost-serverApp-c1581645311]{--_timeline-scope: --scrollerY;--_animation-timeline-y: --scrollerY;--_viewport_scroll-timeline: --scrollerY y}[horizontalUsed=true][_nghost-serverApp-c1581645311]{--_timeline-scope: --scrollerX;--_animation-timeline-x: --scrollerX;--_viewport_scroll-timeline: --scrollerX x}[verticalUsed=true][horizontalUsed=true][_nghost-serverApp-c1581645311]{--_timeline-scope: --scrollerX, --scrollerY;--_viewport_scroll-timeline: --scrollerX x, --scrollerY y}[_nghost-serverApp-c1581645311]{scroll-timeline:var(--_viewport_scroll-timeline);--_scrollbar-hover-thickness-px: var(--scrollbar-track-hover-thickness, var(--_scrollbar-track-thickness-px));--_scrollbar-active-thickness-px: var(--scrollbar-track-active-thickness, var(--_scrollbar-hover-thickness-px));--_track-y-thickness-px: var(--_scrollbar-track-thickness-px);--_track-x-thickness-px: var(--_scrollbar-track-thickness-px);-webkit-user-select:var(--_viewport-user-select);user-select:var(--_viewport-user-select)}[dragging=x][_nghost-serverApp-c1581645311], [dragging=y][_nghost-serverApp-c1581645311]{--_viewport-user-select: none}[dragging=x][_nghost-serverApp-c1581645311]{--_track-x-thickness-px: var(--_scrollbar-active-thickness-px)}[dragging=y][_nghost-serverApp-c1581645311]{--_track-y-thickness-px: var(--_scrollbar-active-thickness-px)}[_nghost-serverApp-c1581645311]{overscroll-behavior:var(--scrollbar-overscroll-behavior, initial)}[mobile=true][_nghost-serverApp-c1581645311]{overscroll-behavior:var(--scrollbar-mobile-overscroll-behavior, none)}[_nghost-serverApp-c1581645311]{--_viewport-pointer-events: auto;--_scrollbar-y-pointer-events: auto;--_scrollbar-x-pointer-events: auto;pointer-events:var(--_viewport-pointer-events)}[disableInteraction=true][_nghost-serverApp-c1581645311]{--_viewport-pointer-events: none;--_scrollbar-y-pointer-events: none;--_scrollbar-x-pointer-events: none}[isVerticallyScrollable=false][_nghost-serverApp-c1581645311]{--_scrollbar-y-pointer-events: none}[isHorizontallyScrollable=false][_nghost-serverApp-c1581645311]{--_scrollbar-x-pointer-events: none}[_nghost-serverApp-c1581645311]{--_scrollbar-thumb-color: var(--scrollbar-thumb-color, #1e90ff);--_scrollbar-thumb-hover-color: var(--scrollbar-thumb-hover-color, var(--_scrollbar-thumb-color));--_scrollbar-thumb-active-color: var(--scrollbar-thumb-active-color, var(--_scrollbar-thumb-hover-color));--_scrollbar-button-color: var(--scrollbar-button-color, transparent);--_scrollbar-button-hover-color: var(--scrollbar-button-hover-color, var(--_scrollbar-button-color));--_scrollbar-button-active-color: var(--scrollbar-button-active-color, var(--_scrollbar-button-hover-color));--_scrollbar-button-inactive-color: var(--scrollbar-button-inactive-color, color-mix(in srgb, var(--_scrollbar-button-color), #000 35%));--_scrollbar-button-fill: var(--scrollbar-button-fill, var(--_scrollbar-thumb-color));--_scrollbar-button-hover-fill: var(--scrollbar-button-hover-fill, var(--_scrollbar-thumb-hover-color));--_scrollbar-button-active-fill: var(--scrollbar-button-active-fill, var(--_scrollbar-thumb-active-color));--_scrollbar-button-inactive-fill: var(--scrollbar-button-inactive-fill, color-mix(in srgb, var(--_scrollbar-button-fill), #000 35%))}@layer default{[_nghost-serverApp-c1581645311]{display:block;max-height:100%;max-width:100%}}</style><style ng-app-id="serverApp">[_nghost-serverApp-c2617948613]{box-sizing:border-box;width:var(--_scrollbar-content-width);z-index:1;min-width:100%;min-height:100%;padding-block-start:var(--_viewport-padding-block-start, 0);padding-block-end:var(--_viewport-padding-block-end, 0);padding-inline-start:var(--_viewport-padding-inline-start, 0);padding-inline-end:var(--_viewport-padding-inline-end, 0)}@layer default{[_nghost-serverApp-c2617948613]{position:relative}[_nghost-serverApp-c2617948613]:not(table){display:flow-root}}</style><style ng-app-id="serverApp">[_nghost-serverApp-c4020475482]{pointer-events:none;position:absolute;inset:0;display:grid;grid-template:var(--_scrollbar-grid-template)}</style><script src="https://js.hcaptcha.com/1/api.js?render=explicit&uj=true" async defer></script></head>
+
+  <body class="theme-unreal-engine"><!--nghm-->
+    <div style="display: none">
+
+          <script type="text/javascript">
+            window.currentProfile = {};
+          </script>
+
+
+          <script type="text/javascript">
+            window.currentPermissions = {"authorizations":{"user_profiles":{"create_profile":true,"hide":false,"manage_badges":false,"manage_organization":false,"manage_profile":false,"read_profile":true,"unhide":false,"update_my_profile":false},"snippets":{"bypass_rate_limit":false,"create_snippet_post":false,"hide":false,"manage_snippet_post":false,"publish_snippet_post":false,"read_community_hidden":false,"read_metrics":false,"read_snippet":true,"read_snippet_post":true,"read_unpublished_snippet_post":false,"unhide":false},"cms":{"manage_announcements":false,"manage_roadmap":false,"manage_videos":false,"read_announcements":true,"read_video_detail":false}},"roles":["guest"]};
+          </script>
+
+    </div>
+
+    <app-root class="app-root" ng-version="21.2.5" ngh="20" ng-server-context="ssr"><div id="top"></div><site-header class="site-header d-print-none" ngh="0"><!----><unrealengine-navigation langurlparam="lang" locale="en" isloggedin="false" customaccountlinks="[
+  {
+    &quot;id&quot;: &quot;notifications&quot;,
+    &quot;key&quot;: &quot;notifications&quot;,
+    &quot;label&quot;: &quot;Notifications&quot;,
+    &quot;locale&quot;: &quot;en&quot;,
+    &quot;hrefTemplate&quot;: &quot;https://dev.epicgames.com/community/api/user_profiles/tab-redirect/notifications/undefined&quot;
+  },
+  {
+    &quot;id&quot;: &quot;favorites&quot;,
+    &quot;key&quot;: &quot;favorites&quot;,
+    &quot;label&quot;: &quot;Favorites&quot;,
+    &quot;locale&quot;: &quot;en&quot;,
+    &quot;hrefTemplate&quot;: &quot;/community/profile/undefined/undefined/favorites&quot;
+  },
+  {
+    &quot;id&quot;: &quot;edit-profile&quot;,
+    &quot;key&quot;: &quot;edit-profile&quot;,
+    &quot;label&quot;: &quot;Edit Profile&quot;,
+    &quot;locale&quot;: &quot;en&quot;,
+    &quot;hrefTemplate&quot;: &quot;/community/profile/edit&quot;
+  }
+]" localeoptions="[
+  {
+    &quot;id&quot;: &quot;en&quot;,
+    &quot;locale&quot;: &quot;en&quot;,
+    &quot;label&quot;: &quot;English&quot;,
+    &quot;langCode&quot;: &quot;en-US&quot;
+  },
+  {
+    &quot;id&quot;: &quot;fr&quot;,
+    &quot;locale&quot;: &quot;fr&quot;,
+    &quot;label&quot;: &quot;Français&quot;,
+    &quot;langCode&quot;: &quot;fr&quot;
+  },
+  {
+    &quot;id&quot;: &quot;es_ES&quot;,
+    &quot;locale&quot;: &quot;es_ES&quot;,
+    &quot;label&quot;: &quot;Español (España)&quot;,
+    &quot;langCode&quot;: &quot;es-ES&quot;
+  },
+  {
+    &quot;id&quot;: &quot;es_MX&quot;,
+    &quot;locale&quot;: &quot;es_MX&quot;,
+    &quot;label&quot;: &quot;Español (LatAm)&quot;,
+    &quot;langCode&quot;: &quot;es-MX&quot;
+  },
+  {
+    &quot;id&quot;: &quot;de&quot;,
+    &quot;locale&quot;: &quot;de&quot;,
+    &quot;label&quot;: &quot;Deutsch&quot;,
+    &quot;langCode&quot;: &quot;de&quot;
+  },
+  {
+    &quot;id&quot;: &quot;pt_BR&quot;,
+    &quot;locale&quot;: &quot;pt_BR&quot;,
+    &quot;label&quot;: &quot;Português (Brasil)&quot;,
+    &quot;langCode&quot;: &quot;pt-BR&quot;
+  },
+  {
+    &quot;id&quot;: &quot;it&quot;,
+    &quot;locale&quot;: &quot;it&quot;,
+    &quot;label&quot;: &quot;Italiano&quot;,
+    &quot;langCode&quot;: &quot;it&quot;
+  },
+  {
+    &quot;id&quot;: &quot;pl&quot;,
+    &quot;locale&quot;: &quot;pl&quot;,
+    &quot;label&quot;: &quot;Polski&quot;,
+    &quot;langCode&quot;: &quot;pl&quot;
+  },
+  {
+    &quot;id&quot;: &quot;tr&quot;,
+    &quot;locale&quot;: &quot;tr&quot;,
+    &quot;label&quot;: &quot;Türkçe&quot;,
+    &quot;langCode&quot;: &quot;tr&quot;
+  },
+  {
+    &quot;id&quot;: &quot;ru&quot;,
+    &quot;locale&quot;: &quot;ru&quot;,
+    &quot;label&quot;: &quot;Русский&quot;,
+    &quot;langCode&quot;: &quot;ru&quot;
+  },
+  {
+    &quot;id&quot;: &quot;ja&quot;,
+    &quot;locale&quot;: &quot;ja&quot;,
+    &quot;label&quot;: &quot;日本語&quot;,
+    &quot;langCode&quot;: &quot;ja&quot;
+  },
+  {
+    &quot;id&quot;: &quot;ko&quot;,
+    &quot;locale&quot;: &quot;ko&quot;,
+    &quot;label&quot;: &quot;한국어&quot;,
+    &quot;langCode&quot;: &quot;ko&quot;
+  },
+  {
+    &quot;id&quot;: &quot;zh_CN&quot;,
+    &quot;locale&quot;: &quot;zh_CN&quot;,
+    &quot;label&quot;: &quot;简体中文&quot;,
+    &quot;langCode&quot;: &quot;zh-CN&quot;
+  }
+]" signoutlink="{
+  &quot;id&quot;: &quot;logout&quot;,
+  &quot;key&quot;: &quot;logout&quot;,
+  &quot;label&quot;: &quot;Sign out&quot;,
+  &quot;locale&quot;: &quot;en&quot;,
+  &quot;hrefTemplate&quot;: &quot;/community&quot;
+}" signinlink="{
+  &quot;id&quot;: &quot;signin&quot;,
+  &quot;key&quot;: &quot;signin&quot;,
+  &quot;label&quot;: &quot;Sign in&quot;,
+  &quot;locale&quot;: &quot;en&quot;,
+  &quot;hrefTemplate&quot;: &quot;https://dev.epicgames.com/community/api/user_identity/login/start?destination=https%3A%2F%2Fdev.epicgames.com%2Fdocumentation%2Fen-us%2Funreal-engine%2Fenhanced-input-in-unreal-engine&quot;
+}"></unrealengine-navigation><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----></site-header><!----><side-panel ngh="1"><div class="side-panel"><div class="mb-3"><button type="button" class="btn btn-lg is-close" title="Close"><i class="eds-icon icon-x-mark"></i></button></div><!----></div><div tabindex="0" class="side-panel-backdrop"></div></side-panel><div class="site-container"><site-nav class="site-nav d-print-none" ngh="4"><edc-sidebar class="" is-collapsed="false" application-family="unreal_engine" user-avatar-url="https://edc-cdn.net/assets/images/default-user.svg" app-context="community" can-access-manage="false" locale="en-us" nav-links="[]" category-links="[]" is-show-profile-links="true"><div><table-of-contents class="document-table-of-content-block" ngh="3"><spinner ngh="2"><div class="spinner py-5"><span class="eds-icon icon-epic"></span></div></spinner><!----><!----><!----><div class="documents-tree"><nav><ul class="contents-table"><!----><!----></ul></nav></div><!----><!----><!----><!----></table-of-contents><!----></div><!----></edc-sidebar><!----></site-nav><router-outlet class="page-content"></router-outlet><document ngh="17"><div class="page-document has-theme-bg"><!----><button type="button" class="btn is-active is-table-of-contents d-md-none d-print-none stick-to-top"><span>Table of Contents</span><i class="eds-icon icon-chevron-down icon-pad-left"></i></button><!----><div class="container"><!----><div class="row align-items-start"><main><header class="section-page-header"><div class="row d-flex justify-content-between"><div class="col col-sm-10"><nav ngh="5"><ol class="breadcrumb is-shrinkable"><li class="breadcrumb-item is-root"><span class="icon-pad-right"><img alt="Epic Games" width="20" height="20" class="align-middle" src="https://edc-cdn.net/assets/images/logo-epic.svg"></span><a href="/">Developer</a></li><!----><!----><li class="breadcrumb-item active" aria-current="page"><span class="text-truncate">Enhanced Input</span><!----><!----></li><!----><!----><!----><!----></ol><!----></nav></div><!----></div><!----><h1>Enhanced Input</h1><p class="text-secondary mb-0"> An overview of the Enhanced Input Plugin. </p><!----></header><!----><div class="row"><div class="col-lg-9 print-w-100"><div class="b-img"><img class="img-fluid" alt="Enhanced Input" width="1920" height="335" loading="lazy" fetchpriority="auto" decoding="auto" ng-img="true" src="https://dev.epicgames.com/community/api/documentation/image/f6ce72ac-d076-4e9a-b13a-abea58975de1?resizing_type=fill&amp;width=1920&amp;height=335" srcset="https://dev.epicgames.com/community/api/documentation/image/f6ce72ac-d076-4e9a-b13a-abea58975de1?resizing_type=fill&amp;width=1920&amp;height=335 1x, https://dev.epicgames.com/community/api/documentation/image/f6ce72ac-d076-4e9a-b13a-abea58975de1?resizing_type=fill&amp;width=3840&amp;height=670 2x"></div><!----><!----><!----><header class="document-header mb-3 d-lg-none d-print-none"><content-nav class="content-nav is-collapsible" ngh="6"><!----><button type="button" class="btn btn-md btn-outline"> On this page<i class="eds-icon icon-pad-left icon-chevron-down"></i></button><!----><!----><!----><!----><!----><!----><!----></content-nav></header><!----><article><!----><!----><div document-content-blocks-renderer="" class="d-block" ngh="10"><div id="content-blocks-renderer" class="content-blocks-renderer"><block-switch-control class="block-switch-control" ngh="7"><!----></block-switch-control><block-switch-info class="block-switch-info" ngh="8"><!----></block-switch-info><blocks-renderer id="blocks-renderer" ngh="9"><!----><block-markdown ngh="2"><div class="block-markdown"><p>For <strong>Unreal Engine 5</strong> (UE5) projects that require more advanced input features, like complex input handling or runtime control remapping, <strong>Enhanced Input </strong>provides developers with an upgrade path and backward compatibility from the default input system from <strong>Unreal Engine 4</strong> (UE4).</p>
+
+<p>This implements features like radial dead zones, chorded actions, contextual input, and prioritization, as well as the ability to extend your own filtering and processing of raw input data in an <strong>Asset</strong>-based environment.</p>
+
+<h2 id="dynamicandcontextualinputmappings">Dynamic and Contextual input mappings</h2>
+
+<p>When you use Enhanced Input you can add and remove <strong>Mapping Contexts</strong> at runtime for the player. This makes it easier to manage a large number of <strong>Actions</strong>. You can change how certain inputs behave depending on the current state of the player.</p>
+
+<p>For example, if you have a player character that can walk, sprint, and be prone. For each of those Character Movement types, you can swap the Mapping Context to have the CTRL key do different actions. While walking and you press the CTRL key, you should crouch. While sprinting and you press CTRL, then you should slide. While prone and you press CTRL you should stand back up.</p>
+
+<h2 id="creatingenhancedinputassets">Creating Enhanced Input Assets</h2>
+
+<p>Enhanced Input is enabled by default. You can create input assets from the Content Browser, by clicking <strong>Add</strong>(<strong>+</strong>) and navigating to the <strong>Input</strong> category.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/bb3fb38c-3a7e-4d0b-b920-b31b88d11f5a/image_0.png" alt="" loading="lazy">
+<h2 id="coreconcepts">Core Concepts</h2>
+
+<p>The Enhanced Input system has four main concepts, <strong>Input Actions</strong>, <strong>Input Mapping Contexts</strong>, <strong>Input Modifiers</strong>, and <strong>Input Triggers</strong>.</p>
+
+<h3 id="inputactions">Input Actions</h3>
+
+<p><strong>Input Actions</strong> are the communication link between the Enhanced Input system and your project's code. Input Actions are the conceptual equivalent to <strong>Action</strong> and <strong>Axis </strong>mapping names, except they are data assets. Each Input Action should represent something that the user can do, like "Crouch" or "Fire Weapon". You can add <strong>Input Listeners</strong> in either Blueprints or C++ when the Input Action's state changes.</p>
+
+<p>Input Actions can be several different types that will determine their behavior. You can make a simple boolean action or a more complex 3D axis. The type of action determines the value. Boolean actions have a simple <strong>bool</strong> value, an <strong>Axis1D</strong> is a <strong>float</strong> value,  an <strong>Axis2D</strong> is an <strong>FVector2D</strong>, and <strong>Axis3D</strong> is a whole <strong>FVector</strong>.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/f2c62175-7fbb-4d83-81b3-4b09d51d24bd/image_1.png" alt="" loading="lazy" width="600">
+<p class="figure-caption is-separated">Input Actions can be different value types that will determine their behavior.</p>
+
+<p>You should use bool actions for inputs that have an on or off state. This is the equivalent of the older Action mappings in the legacy input system. For controls like gamepad thumbstick values, you can use 2D axis actions to hold the X and Y value of the thumbstick position. You can use the 3D axis to hold more complex data, such as motion controller information.</p>
+
+<block-callout-md callout-type="note">
+<p>As an example, a "pick up item" Action might only need an on / off state, indicating whether or not the user wants the character to pick something up, while a "walk" Action might require a 2D axis to describe the direction and speed at which the user wants the character to walk.</p>
+</block-callout-md>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/cbfec54a-8c36-44f8-ac0d-c232d7612436/image_2.png" alt="" loading="lazy" width="600">
+<p class="figure-caption is-separated">The different Input Actions used in the Lyra Game Sample.</p>
+
+<h4 id="triggerstates">Trigger States</h4>
+
+<p>A <strong>Trigger State</strong> represents the current state of an action, such as <strong>Started</strong>, <strong>Ongoing</strong>, <strong>Triggered</strong>, <strong>Completed, </strong>and<strong> Canceled</strong>. Often, you will use the "Triggered" state. You can bind to specific states in both C++ and Blueprint.</p>
+
+<ul>
+  <li>
+    <p><strong>Triggered:</strong> The action was triggered. This means that it has completed the evaluation of all trigger requirements. For example, a "Press and Release" trigger is sent when the user releases the key.</p>
+  </li>
+  <li>
+    <p><strong>Started:</strong> An event occurred that began trigger evaluation. For example, the first press of a "Double tap" trigger will call the "Started" state once.</p>
+  </li>
+  <li>
+    <p><strong>Ongoing:</strong> The trigger is still being processed. For example, a "Press and hold" action is ongoing while the user is holding down the button before the specified duration is reached. Depending on the triggers, this event will fire every tick while the action is evaluated once it receives an input value.</p>
+  </li>
+  <li>
+    <p><strong>Completed:</strong> The trigger evaluation process is completed.</p>
+  </li>
+  <li>
+    <p><strong>Canceled:</strong> The triggering was canceled. For example, a user lets go of a button before a "Press and Hold" action can be triggered.</p>
+  </li>
+</ul>
+
+<h4 id="addinginputlisteners">Adding Input Listeners</h4>
+
+<p>To add an Input action listener in Blueprints, you can right-click in the Blueprint's event graph and type in the name of your input action data asset.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/f6187c7e-2858-4553-b5bc-9b746d5bef0e/image_3.png" alt="" loading="lazy">
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/6100dc17-058b-4aa8-a778-993789529d6c/image_4.png" alt="" loading="lazy">
+<p class="figure-caption is-separated">Adding an Input Action Event and setting it to execute a Print String.</p>
+
+<p>You can also bind input actions in C++</p>
+
+<pre id="code-block-0"><code>	void AFooBar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+	{
+		UEnhancedInputComponent* Input = Cast&lt;UEnhancedInputComponent&gt;(PlayerInputComponent);
+		// You can bind to any of the trigger events here by changing the "ETriggerEvent" enum value
+		Input-&gt;BindAction(AimingInputAction, ETriggerEvent::Triggered, this, &amp;AFooBar::SomeCallbackFunc);
+	}
+
+	void AFooBar::SomeCallbackFunc(const FInputActionInstance&amp; Instance)
+	{
+		// Get the value of the Input Action for whatever type you want here...
+		FVector VectorValue = Instance.GetValue().Get&lt;FVector&gt;();
+		FVector2D 2DAxisValue = Instance.GetValue().Get&lt;FVector2D&gt;();
+		float FloatValue = Instance.GetValue().Get&lt;float&gt;();
+		bool BoolValue = Instance.GetValue().Get&lt;bool&gt;();
+
+		// Do your cool stuff here!
+	}
+</code><button class="btn btn-sm btn-secondary mt-2 copy-btn" type="button" data-code-id="0"><span class="icon-default-width icon-pad-right"><span class="eds-icon icon-stacked-squares align-middle" id="icon-0"></span></span>Copy full snippet</button></pre><textarea id="raw-code-0" class="visually-hidden">void AFooBar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+	{
+		UEnhancedInputComponent* Input = Cast&lt;UEnhancedInputComponent&gt;(PlayerInputComponent);
+		// You can bind to any of the trigger events here by changing the "ETriggerEvent" enum value
+		Input-&gt;BindAction(AimingInputAction, ETriggerEvent::Triggered, this, &amp;AFooBar::SomeCallbackFunc);
+	}
+
+	void AFooBar::SomeCallbackFunc(const FInputActionInstance&amp; Instance)
+	{
+		// Get the value of the Input Action for whatever type you want here...
+		FVector VectorValue = Instance.GetValue().Get&lt;FVector&gt;();
+		FVector2D 2DAxisValue = Instance.GetValue().Get&lt;FVector2D&gt;();
+		float FloatValue = Instance.GetValue().Get&lt;float&gt;();
+		bool BoolValue = Instance.GetValue().Get&lt;bool&gt;();
+
+		// Do your cool stuff here!
+	}</textarea>
+
+<h3 id="inputmappingcontexts">Input Mapping Contexts</h3>
+
+<p><strong>Input Mapping Contexts </strong>are a collection of Input Actions that represents a certain context that the player can be in. They describe the rules for what triggers a given Input Action. Mapping Contexts can be dynamically added, removed, or prioritized for each user.</p>
+
+<p>To create an Input Mapping Context, right-click the <strong>Context Browser</strong>, expand the <strong>Input</strong> option, and choose <strong>Input Mapping Context</strong>.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/d0923212-114f-40ee-8d97-d564edc2ec80/image_5.png" alt="" loading="lazy">
+<p>The basic structure of an Input Mapping Context is a hierarchy with a list of Input Actions at the top level. Under the Input Action level is a list of user inputs that can trigger each Input Action, such as keys, buttons, and movement axes.</p>
+
+<p>The bottom level contains a list of Input Triggers and Input Modifiers for each user input, which you can use to determine how an input's raw value is filtered or processed, and what restrictions it must meet in order to drive the Input Action at the top of its hierarchy.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/6c38fff1-2df0-4100-9a7d-bc6f3b06427a/image_6.png" alt="" loading="lazy" width="600">
+<p>You can apply one or more of these Contexts to a local player through its Enhanced Input Local Player Subsystem, and prioritize them to resolve collisions between multiple Actions trying to consume the same input.</p>
+
+<p>This is where you implement your actual Key to Input Action bindings and specify additional triggers or modifiers for each action. When you add an Input Mapping Context to the Enhanced Input subsystem, you can also give it priority. If you have multiple contexts mapped to the same Input Action, then, when the Input Action is triggered, the context with the highest priority will be considered and the others ignored.</p>
+
+<p>As an example, you can give a character who can swim, walk, and drive vehicles multiple Input Mapping Contexts. One for common actions that are available and always mapped to the same user inputs, and another one for each individual mode of travel.</p>
+
+<p>Developers can then place the vehicle-related Input Actions into a separate Input Mapping Context, which is added to the local player when entering a vehicle, and removed from the local player when exiting the vehicle.</p>
+
+<p>Doing this helps to optimize and prevent bugs by ensuring that inappropriate Input Actions cannot run. Additionally, using mutually-exclusive Input Mapping Contexts will help avoid input collisions, which means when user input is used for different Input Actions the input will never accidentally trigger the wrong action.</p>
+
+<p>You can add mapping contexts to the player in either Blueprints or C++</p>
+
+<pre id="code-block-1"><code>	// Expose a mapping context as a property in your header file...
+	UPROPERTY(EditAnywhere, Category="Input")
+	TSoftObjectPtr&lt;UInputMappingContext&gt; InputMapping;
+
+
+	// In your cpp...
+	if (ULocalPlayer* LocalPlayer = Cast&lt;ULocalPlayer&gt;(Player))
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* InputSystem = LocalPlayer-&gt;GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;())
+		{
+			if (!InputMapping.IsNull())
+			{
+				InputSystem-&gt;AddMappingContext(InputMapping.LoadSynchronous(), Priority);
+			}
+		}
+	}
+</code><button class="btn btn-sm btn-secondary mt-2 copy-btn" type="button" data-code-id="1"><span class="icon-default-width icon-pad-right"><span class="eds-icon icon-stacked-squares align-middle" id="icon-1"></span></span>Copy full snippet</button></pre><textarea id="raw-code-1" class="visually-hidden">// Expose a mapping context as a property in your header file...
+	UPROPERTY(EditAnywhere, Category="Input")
+	TSoftObjectPtr&lt;UInputMappingContext&gt; InputMapping;
+
+
+	// In your cpp...
+	if (ULocalPlayer* LocalPlayer = Cast&lt;ULocalPlayer&gt;(Player))
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* InputSystem = LocalPlayer-&gt;GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;())
+		{
+			if (!InputMapping.IsNull())
+			{
+				InputSystem-&gt;AddMappingContext(InputMapping.LoadSynchronous(), Priority);
+			}
+		}
+	}</textarea>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/cda4af79-acac-4708-979e-9790879f406c/image_7.png" alt="" loading="lazy" width="600">
+<h3 id="inputmodifiers">Input Modifiers</h3>
+
+<p><strong>Input Modifiers</strong> are pre-processors that alter the raw input values that UE receives before sending them on to Input Triggers. The Enhanced Input Plugin has a variety of Input Modifiers to perform tasks like changing the order of axes, implementing "dead zones", and converting axial input to world space.</p>
+
+<p>Input Modifiers are useful for applying sensitivity settings, smoothing input over multiple frames, or changing how input behaves based on the state of the player. Because you have access to the <code>UPlayerInput</code> class when making your own modifier, you can access the owning Player Controller and get any game state you want.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/89bdb32f-5633-465b-b6d0-c54695809073/image_8.png" alt="" loading="lazy" width="600">
+<p>You can make your own Input Modifiers in C++ or Blueprints by creating a subclass of the <code>UInputModifier</code> class and overriding the <code>ModifyRaw_Implementation</code> function.</p>
+
+<p>You can also create your own Input Modifier by creating a new <strong>Blueprint Child Class</strong> using <strong>Input Modifier</strong> as the parent.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/ef7a1197-2a76-44aa-b61f-79883adee90b/image_9.jpg" alt="" loading="lazy" width="600">
+<p>Next, navigate to <strong>My Blueprint &gt; Functions &gt; Override</strong> and from the <strong>dropdown menu</strong> select the <strong>Modify Raw</strong> function.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/ab994f5d-c61c-44f1-ac90-f7809b709a62/image_10.jpg" alt="" loading="lazy" width="600">
+<p>The output parameter is an <strong>Input Action Value</strong>, which contains three <strong>float</strong> values, much like a <strong>Vector</strong>. The function's input parameters contain the <strong>Player Input</strong> object, the <strong>Current Value</strong> from the input hardware or the previous Input Modifier, and a <strong>Delta Time</strong> value.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/823477d6-417a-4597-86b2-ce41ea430392/image_11.jpg" alt="" loading="lazy" width="300">
+<p>The Input Action Value you return from <strong>Modify Raw</strong> will go to the next Input Modifier, if there is one, or to the first Input Trigger.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/7a65a12e-8471-40d3-8011-dd84d3cb9d5f/image_12.jpg" alt="" loading="lazy" width="600">
+<p>Below is an example of an Input Modifier used in the Lyra Game Sample.</p>
+
+<pre id="code-block-2"><code>	/** Applies an inversion of axis values based on a setting in the Lyra Shared game settings */
+	UCLASS(NotBlueprintable, MinimalAPI, meta = (DisplayName = "Lyra Aim Inversion Setting"))
+	class ULyraInputModifierAimInversion : public UInputModifier
+	{
+		GENERATED_BODY()
+
+	protected:
+		virtual FInputActionValue ModifyRaw_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue CurrentValue, float DeltaTime) override
+	{
+	{
+		ULyraLocalPlayer* LocalPlayer = LyraInputModifiersHelpers::GetLocalPlayer(PlayerInput);
+		if (!LocalPlayer)
+		{
+			return CurrentValue;
+		}
+
+		ULyraSettingsShared* Settings = LocalPlayer-&gt;GetSharedSettings();
+		ensure(Settings);
+
+		FVector NewValue = CurrentValue.Get&lt;FVector&gt;();
+
+		if (Settings-&gt;GetInvertVerticalAxis())
+		{
+			NewValue.Y *= -1.0f;
+		}
+
+		if (Settings-&gt;GetInvertHorizontalAxis())
+		{
+			NewValue.X *= -1.0f;
+		}
+
+		return NewValue;
+	}
+	}
+	};
+</code><button class="btn btn-sm btn-secondary mt-2 copy-btn" type="button" data-code-id="2"><span class="icon-default-width icon-pad-right"><span class="eds-icon icon-stacked-squares align-middle" id="icon-2"></span></span>Copy full snippet</button></pre><textarea id="raw-code-2" class="visually-hidden">/** Applies an inversion of axis values based on a setting in the Lyra Shared game settings */
+	UCLASS(NotBlueprintable, MinimalAPI, meta = (DisplayName = "Lyra Aim Inversion Setting"))
+	class ULyraInputModifierAimInversion : public UInputModifier
+	{
+		GENERATED_BODY()
+
+	protected:
+		virtual FInputActionValue ModifyRaw_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue CurrentValue, float DeltaTime) override
+	{
+	{
+		ULyraLocalPlayer* LocalPlayer = LyraInputModifiersHelpers::GetLocalPlayer(PlayerInput);
+		if (!LocalPlayer)
+		{
+			return CurrentValue;
+		}
+
+		ULyraSettingsShared* Settings = LocalPlayer-&gt;GetSharedSettings();
+		ensure(Settings);
+
+		FVector NewValue = CurrentValue.Get&lt;FVector&gt;();
+
+		if (Settings-&gt;GetInvertVerticalAxis())
+		{
+			NewValue.Y *= -1.0f;
+		}
+
+		if (Settings-&gt;GetInvertHorizontalAxis())
+		{
+			NewValue.X *= -1.0f;
+		}
+
+		return NewValue;
+	}
+	}
+	};</textarea>
+
+<h4 id="directionalinput">Directional Input</h4>
+
+<p>A good example of Input Modifier usage is two-dimensional directional input using a single Input Action. With a mouse or a gamepad's analog stick, reading two-dimensional movement is a simple matter of creating an Input Action that supports at least two axes and adding the appropriate input to the Input Mapping Context.</p>
+
+<p>Enhanced Input supports input from one-dimensional sources, such as a keyboard's directional arrows or the popular "WASD" key configuration; you can achieve this control scheme by applying the correct Input Modifiers. Specifically, by using <strong>Negate</strong> to make some keys register as negative, and using <strong>Swizzle Input Axis Values</strong> to make some keys register as Y-Axis instead of the default X-Axis:</p>
+
+<div class="table-responsive"><table class="table" style="--columns-count: 4;">
+  <thead>
+    <tr>
+      <th><strong>Letter Key</strong></th>
+      <th><strong>Arrow Key</strong></th>
+      <th><strong>Desired Input Interpretation</strong></th>
+      <th><strong>Required Input Modifiers</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>W</td>
+      <td>Up</td>
+      <td>Positive Y-Axis</td>
+      <td>Swizzle Input Axis Values (YXZ or ZXY)</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>Left</td>
+      <td>Negative X-Axis</td>
+      <td>Negate</td>
+    </tr>
+    <tr>
+      <td>S</td>
+      <td>Down</td>
+      <td>Negative Y-Axis</td>
+      <td>Negate Swizzle Input Axis Values (YXZ or ZXY)</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>Right</td>
+      <td>Positive X-Axis</td>
+      <td>(none)</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/c64ef3f3-837a-4074-9552-68c332e3c99b/image_13.jpg" alt="" loading="lazy">
+<p class="figure-caption is-separated">This interpretation of the directional arrows or "WASD" keys enables one-dimensional inputs to map to a two-dimensional Input Action.</p>
+
+<p>Since each key reports a positive, one-dimensional value, this value will always occupy the X-axis and will have a value of either 0.0 or 1.0 on any given tick. By negating the value for left and down inputs, and switching the axis order so that the input's X-axis value moves to the Y-axis for up and down inputs, you can use Input Modifiers to interpret a set of one-dimensional inputs as a single two-dimensional input value.</p>
+
+<h3 id="inputtriggers">Input Triggers</h3>
+
+<p>Input Triggers determine whether user input, after passing through an optional list of Input Modifiers, should activate the corresponding Input Action within its Input Mapping Context. Most Input Triggers analyze the input itself, checking for minimum actuation values and validating patterns like short taps, prolonged holds, or the typical "press" or "release" events. The one exception to this rule is the "Chorded Action" Input Trigger, which is only triggered with another Input Action. By default, any user activity on an input will trigger on every tick.</p>
+
+<p>There are three types of Input Triggers:</p>
+
+<ul>
+  <li>
+    <p><strong>Explicit</strong> types cause the input to succeed if the Input Trigger succeeds.</p>
+  </li>
+  <li>
+    <p><strong>Implicit</strong> types cause the input to succeed only if the Input Trigger and all other Implicit type Input Triggers succeed.</p>
+  </li>
+  <li>
+    <p><strong>Blocker</strong> types cause the input to fail if the Input Trigger succeeds.</p>
+  </li>
+</ul>
+
+<p>Below is a logical example of how each trigger type interacts in a situation against other trigger types:</p>
+
+<pre id="code-block-3"><code>	Implicits == 0, Explicits == 0 - Always fires, unless the value is 0.
+
+	Implicits == 0, Explicits &gt; 0 - At least one explicit has been fired.
+
+	Implicits &gt; 0, Explicits == 0 - All implicits have been fired.
+
+	Implicits &gt; 0, Explicits &gt; 0 - All implicits and at least one explicit have been fired.
+
+	Blockers - Override all other triggers to force a trigger failure.
+</code><button class="btn btn-sm btn-secondary mt-2 copy-btn" type="button" data-code-id="3"><span class="icon-default-width icon-pad-right"><span class="eds-icon icon-stacked-squares align-middle" id="icon-3"></span></span>Copy full snippet</button></pre><textarea id="raw-code-3" class="visually-hidden">Implicits == 0, Explicits == 0 - Always fires, unless the value is 0.
+
+	Implicits == 0, Explicits &gt; 0 - At least one explicit has been fired.
+
+	Implicits &gt; 0, Explicits == 0 - All implicits have been fired.
+
+	Implicits &gt; 0, Explicits &gt; 0 - All implicits and at least one explicit have been fired.
+
+	Blockers - Override all other triggers to force a trigger failure.</textarea>
+
+<p>After processing user input, Input Triggers can return one of three states:</p>
+
+<ul>
+  <li>
+    <p><strong>None</strong> indicates that the Input Trigger's conditions have not been met, so the Input Trigger fails.</p>
+  </li>
+  <li>
+    <p><strong>Ongoing</strong> indicates that the Input Trigger's conditions are partially met, and the Input Trigger is processing but is not yet succeeding.</p>
+  </li>
+  <li>
+    <p><strong>Triggered</strong> indicates that all of the Input Trigger's conditions have been met, and the Input Trigger succeeds.</p>
+  </li>
+</ul>
+
+<p>You can create your own Input Trigger by extending the base Input Trigger class, or <strong>Input Trigger Timed Base</strong>.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/7241dae4-8ecb-4e05-bd62-2a56cd4a360e/image_14.jpg" alt="" loading="lazy">
+<p><strong>Input Trigger Timed Base</strong> checks that an input has been held down for a certain length of time before accepting it and returning to the <strong>Ongoing</strong> state.</p>
+
+<p>The provided Input Trigger Timed Base class does not ever return the <strong>Triggered</strong> state. Override the functions within your new Input Trigger child class to determine how it responds to user input. The function <strong>Get Trigger Type</strong> determines the Input Trigger's type. <strong>Update State</strong> takes the player's input object, current Input Action Value, Delta Time, and returns the <strong>None</strong>, <strong>Ongoing</strong>, or <strong>Triggered</strong> state.</p>
+
+<p>As a C++ example, you can navigate to <code>InputTriggers.h</code> and observe the <code>UInputTriggerHold</code> implementation.</p>
+
+<p><strong>UInputTriggerHold.H</strong></p>
+
+<pre id="code-block-4"><code>	/** UInputTriggerHold
+		Trigger fires once input has remained actuated for HoldTimeThreshold seconds.
+		Trigger may optionally fire once, or repeatedly fire.
+	*/
+	UCLASS(NotBlueprintable, MinimalAPI, meta = (DisplayName = "Hold"))
+	class UInputTriggerHold final : public UInputTriggerTimedBase
+	{
+		GENERATED_BODY()
+
+		bool bTriggered = false;
+
+	protected:
+
+		virtual ETriggerState UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime) override;
+
+	public:
+		virtual ETriggerEventsSupported GetSupportedTriggerEvents() const override { return ETriggerEventsSupported::Ongoing; }
+
+		// How long does the input have to be held to cause trigger?
+		UPROPERTY(EditAnywhere, Config, BlueprintReadWrite, Category = "Trigger Settings", meta = (ClampMin = "0"))
+		float HoldTimeThreshold = 1.0f;
+
+		// Should this trigger fire only once, or fire every frame once the hold time threshold is met?
+		UPROPERTY(EditAnywhere, Config, BlueprintReadWrite, Category = "Trigger Settings")
+		bool bIsOneShot = false;
+
+		virtual FString GetDebugState() const override { return HeldDuration ? FString::Printf(TEXT("Hold:%.2f/%.2f"), HeldDuration, HoldTimeThreshold) : FString(); }
+	};
+</code><button class="btn btn-sm btn-secondary mt-2 copy-btn" type="button" data-code-id="4"><span class="icon-default-width icon-pad-right"><span class="eds-icon icon-stacked-squares align-middle" id="icon-4"></span></span>Copy full snippet</button></pre><textarea id="raw-code-4" class="visually-hidden">/** UInputTriggerHold
+		Trigger fires once input has remained actuated for HoldTimeThreshold seconds.
+		Trigger may optionally fire once, or repeatedly fire.
+	*/
+	UCLASS(NotBlueprintable, MinimalAPI, meta = (DisplayName = "Hold"))
+	class UInputTriggerHold final : public UInputTriggerTimedBase
+	{
+		GENERATED_BODY()
+
+		bool bTriggered = false;
+
+	protected:
+
+		virtual ETriggerState UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime) override;
+
+	public:
+		virtual ETriggerEventsSupported GetSupportedTriggerEvents() const override { return ETriggerEventsSupported::Ongoing; }
+
+		// How long does the input have to be held to cause trigger?
+		UPROPERTY(EditAnywhere, Config, BlueprintReadWrite, Category = "Trigger Settings", meta = (ClampMin = "0"))
+		float HoldTimeThreshold = 1.0f;
+
+		// Should this trigger fire only once, or fire every frame once the hold time threshold is met?
+		UPROPERTY(EditAnywhere, Config, BlueprintReadWrite, Category = "Trigger Settings")
+		bool bIsOneShot = false;
+
+		virtual FString GetDebugState() const override { return HeldDuration ? FString::Printf(TEXT("Hold:%.2f/%.2f"), HeldDuration, HoldTimeThreshold) : FString(); }
+	};</textarea>
+
+<p><strong>UInputTriggerHold.cpp</strong></p>
+
+<pre id="code-block-5"><code>	ETriggerState UInputTriggerHold::UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime)
+	{
+		// Update HeldDuration and derive base state
+		ETriggerState State = Super::UpdateState_Implementation(PlayerInput, ModifiedValue, DeltaTime);
+
+		// Trigger when HeldDuration reaches the threshold
+		bool bIsFirstTrigger = !bTriggered;
+		bTriggered = HeldDuration &gt;= HoldTimeThreshold;
+		if (bTriggered)
+		{
+			return (bIsFirstTrigger || !bIsOneShot) ? ETriggerState::Triggered : ETriggerState::None;
+		}
+
+		return State;
+	}
+</code><button class="btn btn-sm btn-secondary mt-2 copy-btn" type="button" data-code-id="5"><span class="icon-default-width icon-pad-right"><span class="eds-icon icon-stacked-squares align-middle" id="icon-5"></span></span>Copy full snippet</button></pre><textarea id="raw-code-5" class="visually-hidden">ETriggerState UInputTriggerHold::UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime)
+	{
+		// Update HeldDuration and derive base state
+		ETriggerState State = Super::UpdateState_Implementation(PlayerInput, ModifiedValue, DeltaTime);
+
+		// Trigger when HeldDuration reaches the threshold
+		bool bIsFirstTrigger = !bTriggered;
+		bTriggered = HeldDuration &gt;= HoldTimeThreshold;
+		if (bTriggered)
+		{
+			return (bIsFirstTrigger || !bIsOneShot) ? ETriggerState::Triggered : ETriggerState::None;
+		}
+
+		return State;
+	}</textarea>
+
+<h2 id="playermappableinputconfig(pmi)">Player Mappable Input Config (PMI)</h2>
+
+<p>Mappable configs are a collection of Input Mapping Contexts that represent one "Config" or "Preset" of mappings. For example, you can have a "Default" and a "Southpaw" mappable config that holds different input mapping contexts for aiming.</p>
+
+<p>You can use these configs to predefine a set of contexts and their priorities to add them all at once instead of having to manually add an array of input mapping contexts. Mappings provide various selections of metadata options that can make programming UI settings screens easier.</p>
+
+<h2 id="debugcommands">Debug Commands</h2>
+
+<p>There are several input related debug commands available to help you debug any input-related behavior you may be working on.</p>
+
+<p>Using the command  <code>showdebug enhancedinput</code> displays the available input action and axis mappings used by your project.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/4bd682f0-58bc-45d8-a161-ee3d2d34870e/image_15.png" alt="" loading="lazy" width="600">
+<p>Using the command: <code>showdebug devices</code></p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/4ad61c87-26da-417a-b096-47d43b098d46/image_16.png" alt="" loading="lazy" width="600">
+<h2 id="injectinginput">Injecting Input</h2>
+
+<p>Enhanced Input also brings along the concept of "Injecting Input" to your player. This provides the means for you to call a function in Blueprints, C++, or use a console command to simulate input on your player.  You can use the <code>Input.+key</code> console command to start simulating input.</p>
+
+<p>Below is an example of setting the <code>Gamepad_Left2D</code> key:</p>
+
+<pre id="code-block-6"><code>	Input.+key Gamepad_Left2D X=0.7 Y=0.5
+
+	Input.-key Gamepad_Left2D
+</code><button class="btn btn-sm btn-secondary mt-2 copy-btn" type="button" data-code-id="6"><span class="icon-default-width icon-pad-right"><span class="eds-icon icon-stacked-squares align-middle" id="icon-6"></span></span>Copy full snippet</button></pre><textarea id="raw-code-6" class="visually-hidden">Input.+key Gamepad_Left2D X=0.7 Y=0.5
+
+	Input.-key Gamepad_Left2D</textarea>
+
+<p>The key name is whatever the actual FKey name is, which you can find in the <code>InputCoreTypes.cpp</code> file, or in the key picker widget if you remove the spaces in the displayed key name.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/cef26c35-3aab-4122-978e-4797f5e72e61/image_17.png" alt="" loading="lazy" width="600">
+<p class="figure-caption is-separated">Injecting input in Blueprints</p>
+
+<pre id="code-block-7"><code>	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;(PC-&gt;GetLocalPlayer());
+
+	UEnhancedPlayerInput* PlayerInput = Subsystem-&gt;GetPlayerInput();
+
+	FInputActionValue ActionValue(1.0f); // This can be a bool, float, FVector2D, or FVector
+	PlayerInput-&gt;InjectInputForAction(InputAction, ActionValue);
+</code><button class="btn btn-sm btn-secondary mt-2 copy-btn" type="button" data-code-id="7"><span class="icon-default-width icon-pad-right"><span class="eds-icon icon-stacked-squares align-middle" id="icon-7"></span></span>Copy full snippet</button></pre><textarea id="raw-code-7" class="visually-hidden">UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;(PC-&gt;GetLocalPlayer());
+
+	UEnhancedPlayerInput* PlayerInput = Subsystem-&gt;GetPlayerInput();
+
+	FInputActionValue ActionValue(1.0f); // This can be a bool, float, FVector2D, or FVector
+	PlayerInput-&gt;InjectInputForAction(InputAction, ActionValue);</textarea>
+
+<h2 id="platformsettings">Platform Settings</h2>
+
+<p>You may want different input settings for different platforms, such as rotating the face buttons on the Nintendo Switch or altering the actions available on mobile devices. Enhanced Input provides a per-platform <strong>Mapping Context Redirect</strong> that allows you to do this easily.</p>
+
+<p>You can make a Blueprint based on the<strong> Enhanced Input Platform Data</strong> class. This is a base class you can build upon for adding any platform-specific options to your game. By default, it contains a map of Input Mapping Contexts, allowing you to redirect one context to another.</p>
+
+<p>Any time the mapping context is referenced on a specific platform, it will be replaced by the value in the map when the mappings are rebuilt.</p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/6ff0dfb2-939e-4733-bfe5-366eda2c9753/image_18.png" alt="" loading="lazy">
+<p>To apply this redirect, add it to your <strong>Project Settings</strong> &gt; <strong>Enhanced Input</strong> &gt; <strong>Platform Settings</strong> &gt; <strong>Input Data</strong></p>
+
+<img src="https://d1iv7db44yhgxn.cloudfront.net/documentation/images/d9969433-e5cc-48fc-8391-47744c9aeb79/image_19.png" alt="" loading="lazy">
+<p>These project settings add to the platforms <code>DefaultInput.ini</code>, so they are hot fixable and easily changed. Because the platform settings provide the base class of <code>UEnhancedInputPlatformData</code>, you can make custom platform settings by creating your own Blueprint or C++ subclass, which then provides access to the settings from anywhere.</p>
+</div></block-markdown><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----></blocks-renderer></div><!----></div></article><tags-list class="mt-1 d-print-none" ngh="11"><!----><ul class="labels-list is-links"><li class="labels-item"><!----><a class="labels-link" href="/community/search?query=blueprints"> blueprints</a><!----></li><li class="labels-item"><!----><a class="labels-link" href="/community/search?query=programming"> programming</a><!----></li><li class="labels-item"><!----><a class="labels-link" href="/community/search?query=input"> input</a><!----></li><li class="labels-item"><!----><a class="labels-link" href="/community/search?query=action%20mapping"> action mapping</a><!----></li><li class="labels-item"><!----><a class="labels-link" href="/community/search?query=axis%20mapping"> axis mapping</a><!----></li><!----></ul><!----></tags-list><!----><div class="explore-more d-print-none"><hr class="hr mt-5"><p class="mb-2"><i class="eds-icon icon-talk-bubble-dots icon-pad-right align-text-bottom"></i>Ask questions and help your peers&nbsp;<a href="https://forums.unrealengine.com/categories?tag=unreal-engine"><span class="inner">Developer Forums</span></a></p><p><i class="eds-icon icon-file-lines icon-pad-right align-text-bottom"></i>Write your own tutorials or read those from others&nbsp;<a href="/community/unreal-engine/learning"><span class="inner">Learning Library</span></a></p></div><!----><div class="mb-5 d-print-none"></div></div><div class="col-lg-3 d-none d-lg-block d-print-none"><div class="document-btn-bar"><btn-favorite entitytype="document" ngh="12"><!----></btn-favorite><!----></div><!----><content-sidebar class="sidebar-sticky has-top-offset" ngh="16"><ng-scrollbar _nghost-serverapp-c1581645311="" mobile="false" dir="ltr" dragging="none" position="native" appearance="native" visibility="native" orientation="auto" disableinteraction="false" verticalused="false" horizontalused="false" isverticallyscrollable="false" ishorizontallyscrollable="false" style="--content-height: 0; --content-width: 0; --viewport-height: 0; --viewport-width: 0;" class="ng-scroll-viewport ng-scrollbar" ngh="14"><ng-scroll-content _ngcontent-serverapp-c1581645311="" _nghost-serverapp-c2617948613="" class="ng-scroll-content" ngh="2"><content-nav class="content-nav" ngh="15"><header class="content-nav-header"><div class="title">On this page</div></header><!----><!----><!----><ul class="list"><li class="list-item is-level-1"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#dynamicandcontextualinputmappings">Dynamic and Contextual input mappings</a></li><li class="list-item is-level-1"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#creatingenhancedinputassets">Creating Enhanced Input Assets</a></li><li class="list-item is-level-1"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#coreconcepts">Core Concepts</a></li><li class="list-item is-level-2"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#inputactions">Input Actions</a></li><li class="list-item is-level-3"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#triggerstates">Trigger States</a></li><li class="list-item is-level-3"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#addinginputlisteners">Adding Input Listeners</a></li><li class="list-item is-level-2"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#inputmappingcontexts">Input Mapping Contexts</a></li><li class="list-item is-level-2"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#inputmodifiers">Input Modifiers</a></li><li class="list-item is-level-3"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#directionalinput">Directional Input</a></li><li class="list-item is-level-2"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#inputtriggers">Input Triggers</a></li><li class="list-item is-level-1"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#playermappableinputconfig(pmi)">Player Mappable Input Config (PMI)</a></li><li class="list-item is-level-1"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#debugcommands">Debug Commands</a></li><li class="list-item is-level-1"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#injectinginput">Injecting Input</a></li><li class="list-item is-level-1"><a class="list-link" href="/documentation/unreal-engine/enhanced-input-in-unreal-engine#platformsettings">Platform Settings</a></li><!----></ul><!----><!----><!----><!----><!----></content-nav><!----><!----><scrollbars _ngcontent-serverapp-c1581645311="" _nghost-serverapp-c4020475482="" ngh="13"><!----><!----></scrollbars></ng-scroll-content></ng-scrollbar></content-sidebar></div></div><!----><!----><!----></main></div></div></div><!----></document><!----></div><site-footer class="d-print-none" ngh="18"><!----><unrealengine-footer locale="en"></unrealengine-footer><!----><!----><!----><!----><!----><!----><!----></site-footer><!----><site-modal ngh="19"><div tabindex="-1" class="modal"><div class="modal-dialog modal-undefined"><div class="modal-content"><button type="button" class="btn-close" title="Close" aria-label="Close"></button><!----></div></div><!----></div></site-modal><notify-component ngh="2"></notify-component></app-root>
+
+    <script>
+      window._epicEnableCookieGuard = true
+    </script>
+    <!-- Tracking script loaded dynamically in app.component.ts with locale parameter -->
+  <script src="runtime.2e1df89b11ca1d98.js" type="module"></script><script src="polyfills.555261395aeafad0.js" type="module"></script><script src="main.0600489c02f903ff.js" type="module"></script>
+
+<script id="serverApp-state" type="application/json">{"1487856180":{"b":"{\n  \"consent_info_modal\": {\n    \"btn\": {\n      \"close\": \"Close\"\n    },\n    \"text\": \"You have successfully consented. You can review your\u003Ca href=\\\"%{ privacyEditPath }\\\" class=\\\"profile-data-info-link\\\"> privacy settings\u003C/a> and revoke consent at any time.\"\n  },\n  \"consent_modal\": {\n    \"btn\": {\n      \"dismiss\": \"Dismiss\",\n      \"save\": \"Save\"\n    },\n    \"checkbox\": \"I consent to creating content on the Epic Developer Community\",\n    \"note\": \"By selecting the checkbox below you consent to participating in the user forums on the Epic Developer Community.\",\n    \"text\": \"The Epic Developer Community is an open platform where users of Epic Games products can learn, share information, and gain inspiration for all of their projects.\u003C/br>\u003C/br> Communicating with others on the User Forums can be a great way to ask questions and learn from the community. Please be aware that anything you post is visible by everyone accessing the Epic Developer Community, whether they're a member or not.\u003C/br>\u003C/br> You may opt out of the user forums at any time. Upon opting out, all of your content will be anonymized, removing your display name and avatar. However, the thread content will still be viewable on the user forums.\",\n    \"title\": \"Communication Consent\"\n  },\n  \"consent_warning_modal\": {\n    \"btn\": {\n      \"close\": \"Close\"\n    },\n    \"text\": \"You have not given your consent. You can review your\u003Ca href=\\\"%{ privacyEditPath }\\\" class=\\\"profile-data-info-link\\\"> privacy settings\u003C/a> and provide consent at any time.\"\n  },\n  \"global\": {\n    \"breadcrumbs\": {\n      \"btn\": {\n        \"expand\": \"Expand breadcrumbs\"\n      },\n      \"context\": {\n        \"community\": \"Community\",\n        \"documentation\": \"Documentation\"\n      },\n      \"developer\": \"Developer\"\n    },\n    \"btn\": {\n      \"add\": {\n        \"link\": \"Add Link\",\n        \"snippet\": \"Add Snippet\",\n        \"step\": \"Add Step\"\n      },\n      \"back_to\": {\n        \"repository\": \"Back to Repository\"\n      },\n      \"clear\": \"Clear\",\n      \"collapse\": \"Collapse\",\n      \"collapse_all\": \"Collapse all\",\n      \"delete\": {\n        \"community_tutorial\": \"Delete Community Tutorial\",\n        \"course\": \"Delete Course\",\n        \"default\": \"Delete\",\n        \"knowledge_base\": \"Delete Knowledge Base\",\n        \"learning_path\": \"Delete Learning Path\",\n        \"livestream\": \"Delete Livestream\",\n        \"recommended_community_tutorial\": \"Delete Recommended Tutorial\",\n        \"snippet\": \"Delete Snippet\",\n        \"talks_and_demos\": \"Delete Talks and Demos\",\n        \"tutorial\": \"Delete Tutorial\"\n      },\n      \"edit\": {\n        \"default\": \"Edit\",\n        \"snippet\": \"Edit snippet\",\n        \"title\": \"Edit Title\"\n      },\n      \"expand\": \"Expand\",\n      \"expand_all\": \"Expand all\",\n      \"go_to\": {\n        \"library\": \"Go to Library\"\n      },\n      \"new\": {\n        \"create\": \"Create new\",\n        \"default\": \"New\",\n        \"snippet\": \"New snippet\"\n      },\n      \"next\": \"Next\",\n      \"prev\": \"Previous\",\n      \"publish\": \"Publish\",\n      \"publishing\": \"Publishing\",\n      \"remove\": {\n        \"link\": \"Remove Link\"\n      },\n      \"report\": {\n        \"default\": \"Report\"\n      },\n      \"save\": \"Save\",\n      \"save_draft\": \"Save draft\",\n      \"saving\": \"Saving\",\n      \"search\": \"Filter by keyword...\",\n      \"unpublish\": \"Unpublish\",\n      \"unpublishing\": \"Unpublishing\",\n      \"view\": {\n        \"community_tutorial\": \"View Community Tutorial\",\n        \"course\": \"View Course\",\n        \"default\": \"View\",\n        \"knowledge_base\": \"View Knowledge Base\",\n        \"learning_path\": \"View Learning Path\",\n        \"livestream\": \"View Livestream\",\n        \"recommended_community_tutorial\": \"View Recommended Tutorial\",\n        \"snippet\": \"View snippet\",\n        \"talks_and_demos\": \"View Talks and Demos\",\n        \"tutorial\": \"View Tutorial\"\n      }\n    },\n    \"data\": {\n      \"all\": \"All\",\n      \"course\": \"course\",\n      \"items\": \"items\",\n      \"learning_path\": \"learning path\",\n      \"link\": \"link\",\n      \"path\": \"path\",\n      \"snippet\": \"snippet\",\n      \"step\": \"step\",\n      \"tutorial\": \"tutorial\"\n    },\n    \"error\": {\n      \"message\": {\n        \"cant_find_any_content\": \"Can't find any content\",\n        \"cant_load_content\": \"Error loading {{ content }}\"\n      }\n    },\n    \"form\": {\n      \"confirm\": {\n        \"delete\": \"Are you sure you want to delete this {{ component }}?\"\n      },\n      \"error\": {\n        \"cannot_be_longer_than\": \"Cannot be longer than\",\n        \"cannot_contain_leading_or_trailing_whitespace\": \"cannot have leading or trailing whitespace\",\n        \"characters\": \"characters\",\n        \"is_invalid\": \"is invalid\",\n        \"is_required\": \"is required\",\n        \"should_contain_at_least\": \"Should contain at least\"\n      },\n      \"fieldset\": {\n        \"categories\": \"Categories\",\n        \"communities\": \"Communities\",\n        \"tags\": \"Tags\"\n      },\n      \"hint\": {\n        \"image_formats\": \"{{ formatsList }} (recommended size: {{ recommendedSize }})\"\n      },\n      \"label\": {\n        \"categories\": \"Categories\",\n        \"category\": \"Category\",\n        \"community\": \"Community\",\n        \"description\": \"Description\",\n        \"filter_by\": \"Filter by\",\n        \"filters\": \"Filters\",\n        \"industries\": \"Industries\",\n        \"locale\": \"Locale\",\n        \"name\": \"Name\",\n        \"published\": \"Published\",\n        \"purpose\": \"Purpose\",\n        \"thumbnail\": \"Thumbnail\",\n        \"title\": \"Title\",\n        \"type\": \"Type\",\n        \"url\": \"URL\"\n      },\n      \"message\": {\n        \"error_deleting\": \"Error deleting {{ component }}\",\n        \"error_publishing\": \"Error publishing {{ component }}\",\n        \"error_saving\": \"Error saving {{ component }}\",\n        \"success_deleting\": \"{{ component }} deleted successfully\",\n        \"success_publishing\": \"{{ component }} published successfully\",\n        \"success_saving\": \"{{ component }} saved successfully\",\n        \"success_unpublished\": \"{{ component }} unpublished successfully\"\n      },\n      \"required\": \"Required\",\n      \"state\": {\n        \"unpublished\": \"Unpublished\"\n      }\n    },\n    \"form_drop\": {\n      \"change\": \"Change {{ label }}\",\n      \"click_to_upload\": \"Click to upload\",\n      \"drop_file\": \"drag & drop file\",\n      \"drop_files\": \"drag & drop files\",\n      \"file_attached\": \"File attached\"\n    },\n    \"general\": {\n      \"application_family\": {\n        \"epic_for_indies\": \"Epic for Indies\",\n        \"epic_games_store\": \"Epic Games Store\",\n        \"epic_online_services\": \"Epic Online Services\",\n        \"fab\": \"Fab\",\n        \"fortnite\": \"Fortnite\",\n        \"metahuman\": \"MetaHuman\",\n        \"online_services\": \"Online Services\",\n        \"realityscan\": \"RealityScan\",\n        \"twinmotion\": \"Twinmotion\",\n        \"unreal_engine\": \"Unreal Engine\"\n      },\n      \"category\": {\n        \"animation_blueprint\": \"Animation Blueprint\",\n        \"asset_creation\": \"Asset Creation\",\n        \"audio\": \"Audio\",\n        \"behavior_tree\": \"Behavior Tree\",\n        \"blueprint\": \"Blueprint\",\n        \"business\": \"Business\",\n        \"c_programming\": \"C\",\n        \"c_sharp\": \"C#\",\n        \"character_and_animation\": \"Character & Animation\",\n        \"cinematics_and_media\": \"Cinematics & Media\",\n        \"command_line\": \"Command Line\",\n        \"config\": \"Config\",\n        \"console_output\": \"Console Output\",\n        \"control_rig\": \"Control Rig\",\n        \"cpp_programming\": \"C++\",\n        \"devices\": \"Devices\",\n        \"distribution_and_marketing\": \"Distribution & Marketing\",\n        \"game_production\": \"Game Production\",\n        \"getting_started_and_setup\": \"Getting Started & Setup\",\n        \"hlsl\": \"HLSL\",\n        \"http\": \"HTTP\",\n        \"java\": \"Java\",\n        \"marketing\": \"Marketing\",\n        \"materials\": \"Materials\",\n        \"metasounds\": \"Metasounds\",\n        \"niagara\": \"Niagara\",\n        \"parser\": \"paRSer\",\n        \"pcg\": \"PCG\",\n        \"pipeline_and_plugins\": \"Pipeline & Plugins\",\n        \"platforms_and_builds\": \"Platforms & Builds\",\n        \"programming_and_scripting\": \"Programming & Scripting\",\n        \"publishing\": \"Publishing\",\n        \"python\": \"Python\",\n        \"rendering\": \"Rendering\",\n        \"shell\": \"Shell\",\n        \"swift\": \"Swift\",\n        \"umg_blueprint\": \"UMG Blueprint\",\n        \"umg_widget\": \"UMG Widget\",\n        \"verse\": \"Verse\",\n        \"world_creation\": \"World Creation\",\n        \"world_geometry\": \"World Geometry\",\n        \"xml\": \"XML\"\n      },\n      \"industry\": {\n        \"architecture\": \"Architecture\",\n        \"film_and_tv\": \"Film & TV\",\n        \"games\": \"Games\",\n        \"virtual_production\": \"Virtual Production\",\n        \"visualization\": \"Visualization\"\n      },\n      \"locale\": {\n        \"ar\": \"Arabic\",\n        \"de\": \"German\",\n        \"en-US\": \"English\",\n        \"es-ES\": \"Spanish\",\n        \"es-MX\": \"Spanish (Mexico)\",\n        \"fr\": \"French\",\n        \"it\": \"Italian\",\n        \"ja\": \"Japanese\",\n        \"ko\": \"Korean\",\n        \"other\": \"Other\",\n        \"pl\": \"Polish\",\n        \"pt-BR\": \"Portuguese\",\n        \"ru\": \"Russian\",\n        \"tr\": \"Turkish\",\n        \"zh-CN\": \"Chinese\"\n      },\n      \"sort_by\": {\n        \"answer_count\": \"Answer count\",\n        \"created_at\": \"Created At\",\n        \"first_published_at\": \"Published on\",\n        \"member_count\": \"Member count\",\n        \"member_since\": \"Member since\",\n        \"name\": \"Name\",\n        \"post_count\": \"Post count\",\n        \"published_at\": \"Published on\",\n        \"relevancy\": \"Relevancy\",\n        \"trending_rank\": \"Trending\",\n        \"tutorial_count\": \"Tutorial count\",\n        \"updated_at\": \"Updated At\",\n        \"username\": \"Username\",\n        \"views_count\": \"Views\"\n      },\n      \"badge\": {\n        \"title\": {\n          \"community_hero\": \"Hero\",\n          \"staff\": \"Staff\",\n          \"partner\": \"Partner\",\n          \"unreal_meetup_lead\": \"Unreal Meetup Lead\",\n          \"forum_veteran\": \"Forum Veteran\",\n          \"q_and_a_sage\": \"Q&A Sage\",\n          \"fab_publisher\": \"Fab Publisher\",\n          \"engine_contributor\": \"Engine Contributor\",\n          \"rocket_beta_participant\": \"Rocket Beta Participant\",\n          \"megagrant_recipient\": \"MegaGrant Recipient\",\n          \"instructor\": \"Instructor\",\n          \"snippet_guru\": \"Snippet Guru\",\n          \"tutorial_guru\": \"Tutorial Guru\",\n          \"uefn_alpha_participant\": \"UEFN Alpha Participant\",\n          \"challenge_winner\": \"Challenge Winner\",\n          \"megajam_winner\": \"MegaJam Winner\",\n          \"founding_hero\": \"Founding Hero\",\n          \"alumni_hero\": \"Alumni Hero\"\n        }\n      }\n    },\n    \"learning\": {\n      \"block\": {\n        \"attachment\": \"Attachment\",\n        \"code_snippet\": \"Code\",\n        \"external_video\": \"External Video\",\n        \"image\": \"Image\",\n        \"link_group\": \"Resources\",\n        \"markdown\": \"Markdown\",\n        \"rich_text\": \"Rich Text\",\n        \"video\": \"Video\"\n      },\n      \"entity\": {\n        \"community_tutorial\": \"Community Tutorial\",\n        \"course\": \"Course\",\n        \"knowledge_base\": \"Knowledge Base\",\n        \"learning_path\": \"Learning Path\",\n        \"livestream\": \"Livestream\",\n        \"recommended_community_tutorial\": \"Recommended Community Tutorial\",\n        \"talks_and_demos\": \"Talks and Demos\",\n        \"tutorial\": \"Tutorial\"\n      },\n      \"entity_group\": {\n        \"community\": \"Community\",\n        \"epic\": \"Epic Games\"\n      },\n      \"entity_manage\": {\n        \"academic_resources\": \"Academic Resources\",\n        \"community_tutorial\": \"Community Tutorial\",\n        \"course\": \"Course\",\n        \"course_module\": \"Course Module\",\n        \"knowledge_base\": \"Knowledge Base\",\n        \"learning_path\": \"Learning Path\",\n        \"livestream\": \"Livestream\",\n        \"recommended_community_tutorial\": \"Recommended Community Tutorial\",\n        \"sample_projects\": \"Sample Projects\",\n        \"talks_and_demos\": \"Talks and Demos\",\n        \"tutorial\": \"Tutorial\"\n      },\n      \"entity_plural\": {\n        \"academic_resources\": \"Academic Resources\",\n        \"community_tutorial\": \"Community Tutorials\",\n        \"course\": \"Courses\",\n        \"knowledge_base\": \"Knowledge Base\",\n        \"learning_path\": \"Learning Paths\",\n        \"livestream\": \"Livestreams\",\n        \"recommended_community_tutorial\": \"Recommended Tutorials\",\n        \"sample_projects\": \"Sample Projects\",\n        \"talks_and_demos\": \"Talks & Demos\",\n        \"tutorial\": \"Tutorials\"\n      },\n      \"module\": \"Module\",\n      \"modules\": \"Modules\"\n    },\n    \"nav\": {\n      \"learning\": \"Learning\",\n      \"snippets\": \"Snippets\"\n    },\n    \"preposition\": {\n      \"for\": \"for\",\n      \"of\": \"of\",\n      \"or\": \"or\"\n    },\n    \"search\": {\n      \"form\": {\n        \"label\": {\n          \"forum\": {\n            \"discussion\": \"Discussion\",\n            \"question\": \"Question\"\n          },\n          \"type\": {\n            \"api_document\": \"API Documentation\",\n            \"document\": \"Documentation\",\n            \"forum\": \"Forum\",\n            \"learning\": \"Learning\",\n            \"snippets\": \"Snippets\",\n            \"user_profiles\": \"Profiles\"\n          }\n        }\n      },\n      \"result\": \"result\",\n      \"results\": \"results\"\n    },\n    \"snippets\": {\n      \"purpose\": {\n        \"building_block\": \"Building Block\",\n        \"experimental\": \"Experimental\",\n        \"learning_example\": \"Learning Example\",\n        \"tool_and_pipeline\": \"Tool and Pipeline\"\n      }\n    },\n    \"static\": {\n      \"page_subtitle\": {\n        \"epic_for_indies\": \"Epic for Indies\",\n        \"epic_games_store\": \"For Epic Games Store & Publishing\",\n        \"fab\": \"For Fab\",\n        \"fortnite\": \"For Fortnite Creative & Unreal Editor for Fortnite\",\n        \"metahuman\": \"For MetaHuman Animator & Creator\",\n        \"online_services\": \"For Account Services & Game Services\",\n        \"realityscan\": \"For RealityScan & RealityScan Mobile\",\n        \"twinmotion\": \"For Twinmotion\",\n        \"unreal_engine\": \"For Unreal Engine\"\n      }\n    }\n  },\n  \"learning\": {\n    \"subtitle\": {\n      \"eos\": \"Build multiplayer experiences with Epic Online Services\",\n      \"epic-for-indies\": \"Resources and tutorials for indie game developers\",\n      \"epic-games-store\": \"Learn how to publish and manage your games on the Epic Games Store\",\n      \"fab\": \"Discover and learn about assets on Fab\",\n      \"fortnite\": \"From your first island to advanced game design, master Fortnite creative development\",\n      \"metahuman\": \"Create stunning digital humans with MetaHuman\",\n      \"online-services\": \"Build multiplayer experiences with Epic Online Services\",\n      \"realityscan\": \"Capture reality with RealityScan\",\n      \"twinmotion\": \"Create stunning visualizations with Twinmotion\",\n      \"unreal-engine\": \"From your first steps to complete mastery of Unreal Engine, we've got you covered.\"\n    },\n    \"title\": \"Learn \"\n  },\n  \"warning\": {\n    \"consent\": {\n      \"text\": \"Review your \u003Ca href=\\\"%{ privacyEditPath }\\\" class=\\\"profile-data-info-link\\\">communication consent\u003C/a> to create posts on the learning library and snippets repository\",\n      \"title\": \"Communication Consent\"\n    }\n  }\n}\n","h":{},"s":200,"st":"OK","u":"/documentation/assets/i18n/en-US.json","rt":"text"},"2354460367":{"b":"{\n  \"ai_answers\": \"AI Answers\",\n  \"form\": {\n    \"expand\": {\n      \"show_less\": \"Show less\",\n      \"show_more\": \"Show more\"\n    },\n    \"label\": {\n      \"date_range\": {\n        \"any_time\": \"Any Time\",\n        \"last_30_days\": \"Last 30 days\",\n        \"last_week\": \"Last Week\",\n        \"last_year\": \"Last Year\"\n      }\n    },\n    \"toggle_filters\": \"Filters\"\n  },\n  \"go_to_search_page\": \"Go to Search page\",\n  \"info_better_results\": \"Want better results? Refine your search with more details. Use \u003Cmark>\\\" \\\"\u003C/mark> for exact match, \u003Cmark>AND\u003C/mark> and \u003Cmark>OR\u003C/mark> for multiple terms, \u003Cmark>-\u003C/mark> to exclude.\",\n  \"no_result\": \"Sorry, we couldn’t find any results for this search.\",\n  \"no_results\": \"No results\",\n  \"nothing_found\": \"Nothing found\",\n  \"page_title\": \"Search\",\n  \"search_across\": \"Search the Epic Developer Community\",\n  \"search_across_description\": \"Find the resources you need throughout documentation, tutorials, forum posts, and much more.\",\n  \"search_in_types\": {\n    \"assistant\": \"Ask the Developer Assistant for help with\",\n    \"documentation\": \"Documentation\",\n    \"forums\": \"Forums\",\n    \"learning\": \"Learning\",\n    \"snippets\": \"Snippets\",\n    \"support\": \"Support\"\n  },\n  \"search_results\": \"search results\",\n  \"show_other_results\": \"Show other Results\",\n  \"showing_results_less_limit\": \"Showing {{ count }} results\",\n  \"showing_results_more_limit\": \"Showing first {{ count }} results\",\n  \"start_typing\": \"Start typing your search request\",\n  \"suggestions_title\": \"Did you mean...\",\n  \"title_search_in\": \"Search In\",\n  \"title_search_results\": \"Search Results\"\n}\n","h":{},"s":200,"st":"OK","u":"/documentation/assets/i18n/global/search/en-US.json","rt":"text"},"2654568506":{"b":{"id":3229202,"hash_id":"W04LL","revision_hash_id":"ABWdV","revision_id":3215988,"updated_at":"2025-03-24T13:57:45.306Z","slug":"enhanced-input-in-unreal-engine","title":"Enhanced Input","description":"An overview of the Enhanced Input Plugin.","source":"external","locale":"en-us","document_type":"overview","seo_title":"Enhanced Input in Unreal Engine","seo_description":"An overview of the Enhanced Input Plugin in Unreal Engine","seo_slug":"enhanced-input-in-unreal-engine","readiness":"production","entitlement":"none","views_count":117397,"thumbnail_image":{"id":24117483,"file_name":"placeholder_topic.png","file_size":69821,"content_type":"image/png","created_at":"2025-03-21T23:52:52.298+00:00","height":180,"width":720,"storage_key":"7330a845-1244-44c0-a6a9-ba8329cbb136","context":"documentation","original_url":"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/7330a845-1244-44c0-a6a9-ba8329cbb136/placeholder_topic.png"},"application_families":["unreal_engine"],"blocks":[{"type":"markdown","content_html":"\u003Cp>For \u003Cstrong>Unreal Engine 5\u003C/strong> (UE5) projects that require more advanced input features, like complex input handling or runtime control remapping, \u003Cstrong>Enhanced Input \u003C/strong>provides developers with an upgrade path and backward compatibility from the default input system from \u003Cstrong>Unreal Engine 4\u003C/strong> (UE4).\u003C/p>\n\n\u003Cp>This implements features like radial dead zones, chorded actions, contextual input, and prioritization, as well as the ability to extend your own filtering and processing of raw input data in an \u003Cstrong>Asset\u003C/strong>-based environment.\u003C/p>\n\n\u003Ch2>Dynamic and Contextual input mappings\u003C/h2>\n\n\u003Cp>When you use Enhanced Input you can add and remove \u003Cstrong>Mapping Contexts\u003C/strong> at runtime for the player. This makes it easier to manage a large number of \u003Cstrong>Actions\u003C/strong>. You can change how certain inputs behave depending on the current state of the player.\u003C/p>\n\n\u003Cp>For example, if you have a player character that can walk, sprint, and be prone. For each of those Character Movement types, you can swap the Mapping Context to have the CTRL key do different actions. While walking and you press the CTRL key, you should crouch. While sprinting and you press CTRL, then you should slide. While prone and you press CTRL you should stand back up.\u003C/p>\n\n\u003Ch2>Creating Enhanced Input Assets\u003C/h2>\n\n\u003Cp>Enhanced Input is enabled by default. You can create input assets from the Content Browser, by clicking \u003Cstrong>Add\u003C/strong>(\u003Cstrong>+\u003C/strong>) and navigating to the \u003Cstrong>Input\u003C/strong> category.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/bb3fb38c-3a7e-4d0b-b920-b31b88d11f5a/image_0.png\" alt=\"\" loading=\"lazy\" />\n\u003Ch2>Core Concepts\u003C/h2>\n\n\u003Cp>The Enhanced Input system has four main concepts, \u003Cstrong>Input Actions\u003C/strong>, \u003Cstrong>Input Mapping Contexts\u003C/strong>, \u003Cstrong>Input Modifiers\u003C/strong>, and \u003Cstrong>Input Triggers\u003C/strong>.\u003C/p>\n\n\u003Ch3>Input Actions\u003C/h3>\n\n\u003Cp>\u003Cstrong>Input Actions\u003C/strong> are the communication link between the Enhanced Input system and your project's code. Input Actions are the conceptual equivalent to \u003Cstrong>Action\u003C/strong> and \u003Cstrong>Axis \u003C/strong>mapping names, except they are data assets. Each Input Action should represent something that the user can do, like \"Crouch\" or \"Fire Weapon\". You can add \u003Cstrong>Input Listeners\u003C/strong> in either Blueprints or C++ when the Input Action's state changes.\u003C/p>\n\n\u003Cp>Input Actions can be several different types that will determine their behavior. You can make a simple boolean action or a more complex 3D axis. The type of action determines the value. Boolean actions have a simple \u003Cstrong>bool\u003C/strong> value, an \u003Cstrong>Axis1D\u003C/strong> is a \u003Cstrong>float\u003C/strong> value,  an \u003Cstrong>Axis2D\u003C/strong> is an \u003Cstrong>FVector2D\u003C/strong>, and \u003Cstrong>Axis3D\u003C/strong> is a whole \u003Cstrong>FVector\u003C/strong>.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/f2c62175-7fbb-4d83-81b3-4b09d51d24bd/image_1.png\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Cp class=\"figure-caption is-separated\">Input Actions can be different value types that will determine their behavior.\u003C/p>\n\n\u003Cp>You should use bool actions for inputs that have an on or off state. This is the equivalent of the older Action mappings in the legacy input system. For controls like gamepad thumbstick values, you can use 2D axis actions to hold the X and Y value of the thumbstick position. You can use the 3D axis to hold more complex data, such as motion controller information.\u003C/p>\n\n\u003Cblock-callout-md callout-type=\"note\">\n\u003Cp>As an example, a \"pick up item\" Action might only need an on / off state, indicating whether or not the user wants the character to pick something up, while a \"walk\" Action might require a 2D axis to describe the direction and speed at which the user wants the character to walk.\u003C/p>\n\u003C/block-callout-md>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/cbfec54a-8c36-44f8-ac0d-c232d7612436/image_2.png\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Cp class=\"figure-caption is-separated\">The different Input Actions used in the Lyra Game Sample.\u003C/p> \n\n\u003Ch4>Trigger States\u003C/h4>\n\n\u003Cp>A \u003Cstrong>Trigger State\u003C/strong> represents the current state of an action, such as \u003Cstrong>Started\u003C/strong>, \u003Cstrong>Ongoing\u003C/strong>, \u003Cstrong>Triggered\u003C/strong>, \u003Cstrong>Completed, \u003C/strong>and\u003Cstrong> Canceled\u003C/strong>. Often, you will use the \"Triggered\" state. You can bind to specific states in both C++ and Blueprint.\u003C/p>\n\n\u003Cul>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Triggered:\u003C/strong> The action was triggered. This means that it has completed the evaluation of all trigger requirements. For example, a \"Press and Release\" trigger is sent when the user releases the key.\u003C/p>\n  \u003C/li>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Started:\u003C/strong> An event occurred that began trigger evaluation. For example, the first press of a \"Double tap\" trigger will call the \"Started\" state once.\u003C/p>\n  \u003C/li>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Ongoing:\u003C/strong> The trigger is still being processed. For example, a \"Press and hold\" action is ongoing while the user is holding down the button before the specified duration is reached. Depending on the triggers, this event will fire every tick while the action is evaluated once it receives an input value.\u003C/p>\n  \u003C/li>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Completed:\u003C/strong> The trigger evaluation process is completed.\u003C/p>\n  \u003C/li>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Canceled:\u003C/strong> The triggering was canceled. For example, a user lets go of a button before a \"Press and Hold\" action can be triggered.\u003C/p>\n  \u003C/li>\n\u003C/ul>\n\n\u003Ch4>Adding Input Listeners\u003C/h4>\n\n\u003Cp>To add an Input action listener in Blueprints, you can right-click in the Blueprint's event graph and type in the name of your input action data asset.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/f6187c7e-2858-4553-b5bc-9b746d5bef0e/image_3.png\" alt=\"\" loading=\"lazy\" />\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/6100dc17-058b-4aa8-a778-993789529d6c/image_4.png\" alt=\"\" loading=\"lazy\" />\n\u003Cp class=\"figure-caption is-separated\">Adding an Input Action Event and setting it to execute a Print String.\u003C/p>\n\n\u003Cp>You can also bind input actions in C++\u003C/p>\n\n\u003Cpre id=\"code-block-0\">\u003Ccode>\tvoid AFooBar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)\n\t{\n\t\tUEnhancedInputComponent* Input = Cast&lt;UEnhancedInputComponent&gt;(PlayerInputComponent);\n\t\t// You can bind to any of the trigger events here by changing the \"ETriggerEvent\" enum value\n\t\tInput-&gt;BindAction(AimingInputAction, ETriggerEvent::Triggered, this, &AFooBar::SomeCallbackFunc);\n\t}\n\t \n\tvoid AFooBar::SomeCallbackFunc(const FInputActionInstance& Instance)\n\t{\n\t\t// Get the value of the Input Action for whatever type you want here...\n\t\tFVector VectorValue = Instance.GetValue().Get&lt;FVector&gt;();\n\t\tFVector2D 2DAxisValue = Instance.GetValue().Get&lt;FVector2D&gt;();\n\t\tfloat FloatValue = Instance.GetValue().Get&lt;float&gt;(); \n\t\tbool BoolValue = Instance.GetValue().Get&lt;bool&gt;();\n\t \n\t\t// Do your cool stuff here!\n\t} \n\u003C/code>\u003Cbutton class=\"btn btn-sm btn-secondary mt-2 copy-btn\" type=\"button\" data-code-id=\"0\">\u003Cspan class=\"icon-default-width icon-pad-right\">\u003Cspan class=\"eds-icon icon-stacked-squares align-middle\" id=\"icon-0\">\u003C/span>\u003C/span>Copy full snippet\u003C/button>\u003C/pre>\n\n\u003Ch3>Input Mapping Contexts\u003C/h3>\n\n\u003Cp>\u003Cstrong>Input Mapping Contexts \u003C/strong>are a collection of Input Actions that represents a certain context that the player can be in. They describe the rules for what triggers a given Input Action. Mapping Contexts can be dynamically added, removed, or prioritized for each user.\u003C/p>\n\n\u003Cp>To create an Input Mapping Context, right-click the \u003Cstrong>Context Browser\u003C/strong>, expand the \u003Cstrong>Input\u003C/strong> option, and choose \u003Cstrong>Input Mapping Context\u003C/strong>.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/d0923212-114f-40ee-8d97-d564edc2ec80/image_5.png\" alt=\"\" loading=\"lazy\" />\n\u003Cp>The basic structure of an Input Mapping Context is a hierarchy with a list of Input Actions at the top level. Under the Input Action level is a list of user inputs that can trigger each Input Action, such as keys, buttons, and movement axes.\u003C/p>\n\n\u003Cp>The bottom level contains a list of Input Triggers and Input Modifiers for each user input, which you can use to determine how an input's raw value is filtered or processed, and what restrictions it must meet in order to drive the Input Action at the top of its hierarchy.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/6c38fff1-2df0-4100-9a7d-bc6f3b06427a/image_6.png\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Cp>You can apply one or more of these Contexts to a local player through its Enhanced Input Local Player Subsystem, and prioritize them to resolve collisions between multiple Actions trying to consume the same input.\u003C/p>\n\n\u003Cp>This is where you implement your actual Key to Input Action bindings and specify additional triggers or modifiers for each action. When you add an Input Mapping Context to the Enhanced Input subsystem, you can also give it priority. If you have multiple contexts mapped to the same Input Action, then, when the Input Action is triggered, the context with the highest priority will be considered and the others ignored.\u003C/p>\n\n\u003Cp>As an example, you can give a character who can swim, walk, and drive vehicles multiple Input Mapping Contexts. One for common actions that are available and always mapped to the same user inputs, and another one for each individual mode of travel.\u003C/p>\n\n\u003Cp>Developers can then place the vehicle-related Input Actions into a separate Input Mapping Context, which is added to the local player when entering a vehicle, and removed from the local player when exiting the vehicle.\u003C/p>\n\n\u003Cp>Doing this helps to optimize and prevent bugs by ensuring that inappropriate Input Actions cannot run. Additionally, using mutually-exclusive Input Mapping Contexts will help avoid input collisions, which means when user input is used for different Input Actions the input will never accidentally trigger the wrong action.\u003C/p>\n\n\u003Cp>You can add mapping contexts to the player in either Blueprints or C++\u003C/p>\n\n\u003Cpre id=\"code-block-1\">\u003Ccode>\t// Expose a mapping context as a property in your header file...\n\tUPROPERTY(EditAnywhere, Category=\"Input\")\n\tTSoftObjectPtr&lt;UInputMappingContext&gt; InputMapping;\n\t \n\t \n\t// In your cpp...\n\tif (ULocalPlayer* LocalPlayer = Cast&lt;ULocalPlayer&gt;(Player))\n\t{\n\t\tif (UEnhancedInputLocalPlayerSubsystem* InputSystem = LocalPlayer-&gt;GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;())\n\t\t{\n\t\t\tif (!InputMapping.IsNull())\n\t\t\t{\n\t\t\t\tInputSystem-&gt;AddMappingContext(InputMapping.LoadSynchronous(), Priority);\n\t\t\t}\n\t\t}\n\t}\n\u003C/code>\u003Cbutton class=\"btn btn-sm btn-secondary mt-2 copy-btn\" type=\"button\" data-code-id=\"1\">\u003Cspan class=\"icon-default-width icon-pad-right\">\u003Cspan class=\"eds-icon icon-stacked-squares align-middle\" id=\"icon-1\">\u003C/span>\u003C/span>Copy full snippet\u003C/button>\u003C/pre>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/cda4af79-acac-4708-979e-9790879f406c/image_7.png\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Ch3>Input Modifiers\u003C/h3>\n\n\u003Cp>\u003Cstrong>Input Modifiers\u003C/strong> are pre-processors that alter the raw input values that UE receives before sending them on to Input Triggers. The Enhanced Input Plugin has a variety of Input Modifiers to perform tasks like changing the order of axes, implementing \"dead zones\", and converting axial input to world space.\u003C/p>\n\n\u003Cp>Input Modifiers are useful for applying sensitivity settings, smoothing input over multiple frames, or changing how input behaves based on the state of the player. Because you have access to the \u003Ccode>UPlayerInput\u003C/code> class when making your own modifier, you can access the owning Player Controller and get any game state you want.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/89bdb32f-5633-465b-b6d0-c54695809073/image_8.png\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Cp>You can make your own Input Modifiers in C++ or Blueprints by creating a subclass of the \u003Ccode>UInputModifier\u003C/code> class and overriding the \u003Ccode>ModifyRaw_Implementation\u003C/code> function.\u003C/p>\n\n\u003Cp>You can also create your own Input Modifier by creating a new \u003Cstrong>Blueprint Child Class\u003C/strong> using \u003Cstrong>Input Modifier\u003C/strong> as the parent.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/ef7a1197-2a76-44aa-b61f-79883adee90b/image_9.jpg\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Cp>Next, navigate to \u003Cstrong>My Blueprint > Functions > Override\u003C/strong> and from the \u003Cstrong>dropdown menu\u003C/strong> select the \u003Cstrong>Modify Raw\u003C/strong> function.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/ab994f5d-c61c-44f1-ac90-f7809b709a62/image_10.jpg\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Cp>The output parameter is an \u003Cstrong>Input Action Value\u003C/strong>, which contains three \u003Cstrong>float\u003C/strong> values, much like a \u003Cstrong>Vector\u003C/strong>. The function's input parameters contain the \u003Cstrong>Player Input\u003C/strong> object, the \u003Cstrong>Current Value\u003C/strong> from the input hardware or the previous Input Modifier, and a \u003Cstrong>Delta Time\u003C/strong> value.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/823477d6-417a-4597-86b2-ce41ea430392/image_11.jpg\" alt=\"\" loading=\"lazy\" width=\"300\" />\n\u003Cp>The Input Action Value you return from \u003Cstrong>Modify Raw\u003C/strong> will go to the next Input Modifier, if there is one, or to the first Input Trigger.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/7a65a12e-8471-40d3-8011-dd84d3cb9d5f/image_12.jpg\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Cp>Below is an example of an Input Modifier used in the Lyra Game Sample.\u003C/p>\n\n\u003Cpre id=\"code-block-2\">\u003Ccode>\t/** Applies an inversion of axis values based on a setting in the Lyra Shared game settings */\n\tUCLASS(NotBlueprintable, MinimalAPI, meta = (DisplayName = \"Lyra Aim Inversion Setting\"))\n\tclass ULyraInputModifierAimInversion : public UInputModifier\n\t{\n\t\tGENERATED_BODY()\n\t\t \n\tprotected:\n\t\tvirtual FInputActionValue ModifyRaw_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue CurrentValue, float DeltaTime) override\n\t{\n\t{\n\t\tULyraLocalPlayer* LocalPlayer = LyraInputModifiersHelpers::GetLocalPlayer(PlayerInput);\n\t\tif (!LocalPlayer)\n\t\t{\n\t\t\treturn CurrentValue;\n\t\t}\n\t\t \n\t\tULyraSettingsShared* Settings = LocalPlayer-&gt;GetSharedSettings();\n\t\tensure(Settings);\n\t \n\t\tFVector NewValue = CurrentValue.Get&lt;FVector&gt;();\n\t\t \n\t\tif (Settings-&gt;GetInvertVerticalAxis())\n\t\t{\n\t\t\tNewValue.Y *= -1.0f;\n\t\t}\n\t\t \n\t\tif (Settings-&gt;GetInvertHorizontalAxis())\n\t\t{\n\t\t\tNewValue.X *= -1.0f;\n\t\t}\n\t\t \n\t\treturn NewValue;\n\t}\n\t}\n\t}; \n\u003C/code>\u003Cbutton class=\"btn btn-sm btn-secondary mt-2 copy-btn\" type=\"button\" data-code-id=\"2\">\u003Cspan class=\"icon-default-width icon-pad-right\">\u003Cspan class=\"eds-icon icon-stacked-squares align-middle\" id=\"icon-2\">\u003C/span>\u003C/span>Copy full snippet\u003C/button>\u003C/pre>\n\n\u003Ch4>Directional Input\u003C/h4>\n\n\u003Cp>A good example of Input Modifier usage is two-dimensional directional input using a single Input Action. With a mouse or a gamepad's analog stick, reading two-dimensional movement is a simple matter of creating an Input Action that supports at least two axes and adding the appropriate input to the Input Mapping Context.\u003C/p>\n\n\u003Cp>Enhanced Input supports input from one-dimensional sources, such as a keyboard's directional arrows or the popular \"WASD\" key configuration; you can achieve this control scheme by applying the correct Input Modifiers. Specifically, by using \u003Cstrong>Negate\u003C/strong> to make some keys register as negative, and using \u003Cstrong>Swizzle Input Axis Values\u003C/strong> to make some keys register as Y-Axis instead of the default X-Axis:\u003C/p>\n\n\u003Ctable>\n  \u003Cthead>\n    \u003Ctr>\n      \u003Cth>\u003Cstrong>Letter Key\u003C/strong>\u003C/th>\n      \u003Cth>\u003Cstrong>Arrow Key\u003C/strong>\u003C/th>\n      \u003Cth>\u003Cstrong>Desired Input Interpretation\u003C/strong>\u003C/th>\n      \u003Cth>\u003Cstrong>Required Input Modifiers\u003C/strong>\u003C/th>\n    \u003C/tr>\n  \u003C/thead>\n  \u003Ctbody>\n    \u003Ctr>\n      \u003Ctd>W\u003C/td>\n      \u003Ctd>Up\u003C/td>\n      \u003Ctd>Positive Y-Axis\u003C/td>\n      \u003Ctd>Swizzle Input Axis Values (YXZ or ZXY)\u003C/td>\n    \u003C/tr>\n    \u003Ctr>\n      \u003Ctd>A\u003C/td>\n      \u003Ctd>Left\u003C/td>\n      \u003Ctd>Negative X-Axis\u003C/td>\n      \u003Ctd>Negate\u003C/td>\n    \u003C/tr>\n    \u003Ctr>\n      \u003Ctd>S\u003C/td>\n      \u003Ctd>Down\u003C/td>\n      \u003Ctd>Negative Y-Axis\u003C/td>\n      \u003Ctd>Negate Swizzle Input Axis Values (YXZ or ZXY)\u003C/td>\n    \u003C/tr>\n    \u003Ctr>\n      \u003Ctd>D\u003C/td>\n      \u003Ctd>Right\u003C/td>\n      \u003Ctd>Positive X-Axis\u003C/td>\n      \u003Ctd>(none)\u003C/td>\n    \u003C/tr>\n  \u003C/tbody>\n\u003C/table>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/c64ef3f3-837a-4074-9552-68c332e3c99b/image_13.jpg\" alt=\"\" loading=\"lazy\" />\n\u003Cp class=\"figure-caption is-separated\">This interpretation of the directional arrows or \"WASD\" keys enables one-dimensional inputs to map to a two-dimensional Input Action.\u003C/p>\n\n\u003Cp>Since each key reports a positive, one-dimensional value, this value will always occupy the X-axis and will have a value of either 0.0 or 1.0 on any given tick. By negating the value for left and down inputs, and switching the axis order so that the input's X-axis value moves to the Y-axis for up and down inputs, you can use Input Modifiers to interpret a set of one-dimensional inputs as a single two-dimensional input value.\u003C/p>\n\n\u003Ch3>Input Triggers\u003C/h3>\n\n\u003Cp>Input Triggers determine whether user input, after passing through an optional list of Input Modifiers, should activate the corresponding Input Action within its Input Mapping Context. Most Input Triggers analyze the input itself, checking for minimum actuation values and validating patterns like short taps, prolonged holds, or the typical \"press\" or \"release\" events. The one exception to this rule is the \"Chorded Action\" Input Trigger, which is only triggered with another Input Action. By default, any user activity on an input will trigger on every tick.\u003C/p>\n\n\u003Cp>There are three types of Input Triggers:\u003C/p>\n\n\u003Cul>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Explicit\u003C/strong> types cause the input to succeed if the Input Trigger succeeds.\u003C/p>\n  \u003C/li>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Implicit\u003C/strong> types cause the input to succeed only if the Input Trigger and all other Implicit type Input Triggers succeed.\u003C/p>\n  \u003C/li>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Blocker\u003C/strong> types cause the input to fail if the Input Trigger succeeds.\u003C/p>\n  \u003C/li>\n\u003C/ul>\n\n\u003Cp>Below is a logical example of how each trigger type interacts in a situation against other trigger types:\u003C/p>\n\n\u003Cpre id=\"code-block-3\">\u003Ccode>\tImplicits == 0, Explicits == 0 - Always fires, unless the value is 0.\n\n\tImplicits == 0, Explicits &gt; 0 - At least one explicit has been fired.\n\n\tImplicits &gt; 0, Explicits == 0 - All implicits have been fired.\n\n\tImplicits &gt; 0, Explicits &gt; 0 - All implicits and at least one explicit have been fired.\n\n\tBlockers - Override all other triggers to force a trigger failure.\n\u003C/code>\u003Cbutton class=\"btn btn-sm btn-secondary mt-2 copy-btn\" type=\"button\" data-code-id=\"3\">\u003Cspan class=\"icon-default-width icon-pad-right\">\u003Cspan class=\"eds-icon icon-stacked-squares align-middle\" id=\"icon-3\">\u003C/span>\u003C/span>Copy full snippet\u003C/button>\u003C/pre>\n\n\u003Cp>After processing user input, Input Triggers can return one of three states:\u003C/p>\n\n\u003Cul>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>None\u003C/strong> indicates that the Input Trigger's conditions have not been met, so the Input Trigger fails.\u003C/p>\n  \u003C/li>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Ongoing\u003C/strong> indicates that the Input Trigger's conditions are partially met, and the Input Trigger is processing but is not yet succeeding.\u003C/p>\n  \u003C/li>\n  \u003Cli>\n    \u003Cp>\u003Cstrong>Triggered\u003C/strong> indicates that all of the Input Trigger's conditions have been met, and the Input Trigger succeeds.\u003C/p>\n  \u003C/li>\n\u003C/ul>\n\n\u003Cp>You can create your own Input Trigger by extending the base Input Trigger class, or \u003Cstrong>Input Trigger Timed Base\u003C/strong>.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/7241dae4-8ecb-4e05-bd62-2a56cd4a360e/image_14.jpg\" alt=\"\" loading=\"lazy\" />\n\u003Cp>\u003Cstrong>Input Trigger Timed Base\u003C/strong> checks that an input has been held down for a certain length of time before accepting it and returning to the \u003Cstrong>Ongoing\u003C/strong> state.\u003C/p>\n\n\u003Cp>The provided Input Trigger Timed Base class does not ever return the \u003Cstrong>Triggered\u003C/strong> state. Override the functions within your new Input Trigger child class to determine how it responds to user input. The function \u003Cstrong>Get Trigger Type\u003C/strong> determines the Input Trigger's type. \u003Cstrong>Update State\u003C/strong> takes the player's input object, current Input Action Value, Delta Time, and returns the \u003Cstrong>None\u003C/strong>, \u003Cstrong>Ongoing\u003C/strong>, or \u003Cstrong>Triggered\u003C/strong> state.\u003C/p>\n\n\u003Cp>As a C++ example, you can navigate to \u003Ccode>InputTriggers.h\u003C/code> and observe the \u003Ccode>UInputTriggerHold\u003C/code> implementation.\u003C/p>\n\n\u003Cp>\u003Cstrong>UInputTriggerHold.H\u003C/strong>\u003C/p>\n\n\u003Cpre id=\"code-block-4\">\u003Ccode>\t/** UInputTriggerHold\n\t\tTrigger fires once input has remained actuated for HoldTimeThreshold seconds.\n\t\tTrigger may optionally fire once, or repeatedly fire.\n\t*/\n\tUCLASS(NotBlueprintable, MinimalAPI, meta = (DisplayName = \"Hold\"))\n\tclass UInputTriggerHold final : public UInputTriggerTimedBase\n\t{\n\t\tGENERATED_BODY()\n\n\t\tbool bTriggered = false;\n\n\tprotected:\n\n\t\tvirtual ETriggerState UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime) override;\n\n\tpublic:\n\t\tvirtual ETriggerEventsSupported GetSupportedTriggerEvents() const override { return ETriggerEventsSupported::Ongoing; }\n\t\t\n\t\t// How long does the input have to be held to cause trigger?\n\t\tUPROPERTY(EditAnywhere, Config, BlueprintReadWrite, Category = \"Trigger Settings\", meta = (ClampMin = \"0\"))\n\t\tfloat HoldTimeThreshold = 1.0f;\n\n\t\t// Should this trigger fire only once, or fire every frame once the hold time threshold is met?\n\t\tUPROPERTY(EditAnywhere, Config, BlueprintReadWrite, Category = \"Trigger Settings\")\n\t\tbool bIsOneShot = false;\n\n\t\tvirtual FString GetDebugState() const override { return HeldDuration ? FString::Printf(TEXT(\"Hold:%.2f/%.2f\"), HeldDuration, HoldTimeThreshold) : FString(); }\n\t};\n\u003C/code>\u003Cbutton class=\"btn btn-sm btn-secondary mt-2 copy-btn\" type=\"button\" data-code-id=\"4\">\u003Cspan class=\"icon-default-width icon-pad-right\">\u003Cspan class=\"eds-icon icon-stacked-squares align-middle\" id=\"icon-4\">\u003C/span>\u003C/span>Copy full snippet\u003C/button>\u003C/pre>\n\n\u003Cp>\u003Cstrong>UInputTriggerHold.cpp\u003C/strong>\u003C/p>\n\n\u003Cpre id=\"code-block-5\">\u003Ccode>\tETriggerState UInputTriggerHold::UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime)\n\t{\n\t\t// Update HeldDuration and derive base state\n\t\tETriggerState State = Super::UpdateState_Implementation(PlayerInput, ModifiedValue, DeltaTime);\n\n\t\t// Trigger when HeldDuration reaches the threshold\n\t\tbool bIsFirstTrigger = !bTriggered;\n\t\tbTriggered = HeldDuration &gt;= HoldTimeThreshold;\n\t\tif (bTriggered)\n\t\t{\n\t\t\treturn (bIsFirstTrigger || !bIsOneShot) ? ETriggerState::Triggered : ETriggerState::None;\n\t\t}\n\n\t\treturn State;\n\t} \n\u003C/code>\u003Cbutton class=\"btn btn-sm btn-secondary mt-2 copy-btn\" type=\"button\" data-code-id=\"5\">\u003Cspan class=\"icon-default-width icon-pad-right\">\u003Cspan class=\"eds-icon icon-stacked-squares align-middle\" id=\"icon-5\">\u003C/span>\u003C/span>Copy full snippet\u003C/button>\u003C/pre>\n\n\u003Ch2>Player Mappable Input Config (PMI)\u003C/h2>\n\n\u003Cp>Mappable configs are a collection of Input Mapping Contexts that represent one \"Config\" or \"Preset\" of mappings. For example, you can have a \"Default\" and a \"Southpaw\" mappable config that holds different input mapping contexts for aiming.\u003C/p>\n\n\u003Cp>You can use these configs to predefine a set of contexts and their priorities to add them all at once instead of having to manually add an array of input mapping contexts. Mappings provide various selections of metadata options that can make programming UI settings screens easier.\u003C/p>\n\n\u003Ch2>Debug Commands\u003C/h2>\n\n\u003Cp>There are several input related debug commands available to help you debug any input-related behavior you may be working on.\u003C/p>\n\n\u003Cp>Using the command  \u003Ccode>showdebug enhancedinput\u003C/code> displays the available input action and axis mappings used by your project.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/4bd682f0-58bc-45d8-a161-ee3d2d34870e/image_15.png\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Cp>Using the command: \u003Ccode>showdebug devices\u003C/code>\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/4ad61c87-26da-417a-b096-47d43b098d46/image_16.png\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Ch2>Injecting Input\u003C/h2>\n\n\u003Cp>Enhanced Input also brings along the concept of \"Injecting Input\" to your player. This provides the means for you to call a function in Blueprints, C++, or use a console command to simulate input on your player.  You can use the \u003Ccode>Input.+key\u003C/code> console command to start simulating input.\u003C/p>\n\n\u003Cp>Below is an example of setting the \u003Ccode>Gamepad_Left2D\u003C/code> key:\u003C/p>\n\n\u003Cpre id=\"code-block-6\">\u003Ccode>\tInput.+key Gamepad_Left2D X=0.7 Y=0.5\n\n\tInput.-key Gamepad_Left2D\n\u003C/code>\u003Cbutton class=\"btn btn-sm btn-secondary mt-2 copy-btn\" type=\"button\" data-code-id=\"6\">\u003Cspan class=\"icon-default-width icon-pad-right\">\u003Cspan class=\"eds-icon icon-stacked-squares align-middle\" id=\"icon-6\">\u003C/span>\u003C/span>Copy full snippet\u003C/button>\u003C/pre>\n\n\u003Cp>The key name is whatever the actual FKey name is, which you can find in the \u003Ccode>InputCoreTypes.cpp\u003C/code> file, or in the key picker widget if you remove the spaces in the displayed key name.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/cef26c35-3aab-4122-978e-4797f5e72e61/image_17.png\" alt=\"\" loading=\"lazy\" width=\"600\" />\n\u003Cp class=\"figure-caption is-separated\">Injecting input in Blueprints\u003C/p>\n\n\u003Cpre id=\"code-block-7\">\u003Ccode>\tUEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;(PC-&gt;GetLocalPlayer());\n\t \n\tUEnhancedPlayerInput* PlayerInput = Subsystem-&gt;GetPlayerInput();\n\t \n\tFInputActionValue ActionValue(1.0f); // This can be a bool, float, FVector2D, or FVector\n\tPlayerInput-&gt;InjectInputForAction(InputAction, ActionValue); \n\u003C/code>\u003Cbutton class=\"btn btn-sm btn-secondary mt-2 copy-btn\" type=\"button\" data-code-id=\"7\">\u003Cspan class=\"icon-default-width icon-pad-right\">\u003Cspan class=\"eds-icon icon-stacked-squares align-middle\" id=\"icon-7\">\u003C/span>\u003C/span>Copy full snippet\u003C/button>\u003C/pre>\n\n\u003Ch2>Platform Settings\u003C/h2>\n\n\u003Cp>You may want different input settings for different platforms, such as rotating the face buttons on the Nintendo Switch or altering the actions available on mobile devices. Enhanced Input provides a per-platform \u003Cstrong>Mapping Context Redirect\u003C/strong> that allows you to do this easily.\u003C/p>\n\n\u003Cp>You can make a Blueprint based on the\u003Cstrong> Enhanced Input Platform Data\u003C/strong> class. This is a base class you can build upon for adding any platform-specific options to your game. By default, it contains a map of Input Mapping Contexts, allowing you to redirect one context to another.\u003C/p>\n\n\u003Cp>Any time the mapping context is referenced on a specific platform, it will be replaced by the value in the map when the mappings are rebuilt.\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/6ff0dfb2-939e-4733-bfe5-366eda2c9753/image_18.png\" alt=\"\" loading=\"lazy\" />\n\u003Cp>To apply this redirect, add it to your \u003Cstrong>Project Settings\u003C/strong> > \u003Cstrong>Enhanced Input\u003C/strong> > \u003Cstrong>Platform Settings\u003C/strong> > \u003Cstrong>Input Data\u003C/strong>\u003C/p>\n\n\u003Cimg src=\"https://d1iv7db44yhgxn.cloudfront.net/documentation/images/d9969433-e5cc-48fc-8391-47744c9aeb79/image_19.png\" alt=\"\" loading=\"lazy\" />\n\u003Cp>These project settings add to the platforms \u003Ccode>DefaultInput.ini\u003C/code>, so they are hot fixable and easily changed. Because the platform settings provide the base class of \u003Ccode>UEnhancedInputPlatformData\u003C/code>, you can make custom platform settings by creating your own Blueprint or C++ subclass, which then provides access to the settings from anywhere.\u003C/p>\n","settings":{"is_hidden":false}}],"applications":[{"id":3581142,"type":"unreal_engine","version":"5.5","major_version":"5"},{"id":4279130,"type":"unreal_engine","version":"5.6","major_version":"5"},{"id":4279213,"type":"unreal_engine","version":"5.7","major_version":"5"},{"id":4279322,"type":"unreal_engine","version":"5.8","major_version":"5"}],"tags":["blueprints","programming","input","action mapping","axis mapping"],"banner_image":{"id":24117492,"file_name":"ue5-hero.png","file_size":1166113,"content_type":"image/png","created_at":"2025-03-21T23:52:52.639+00:00","height":548,"width":1920,"storage_key":"f6ce72ac-d076-4e9a-b13a-abea58975de1","context":"documentation"},"prereq_documents":[],"related_documents":[]},"h":{},"s":200,"st":"OK","u":"http://documentation-app/community/api/documentation/document.json","rt":"json"},"__nghData__":[{"t":{"0":"t1","1":"t11"},"c":{"0":[{"i":"t1","r":10,"t":{"0":"t2","1":"t3","2":"t4","3":"t5","4":"t6","5":"t7","6":"t8","7":"t9","8":"t10"},"c":{"0":[],"1":[{"i":"t3","r":1}],"2":[],"3":[],"4":[],"5":[],"6":[],"7":[],"8":[]}}],"1":[]}},{"c":{"4":[]}},{},{"t":{"0":"t16","1":"t17","2":"t18","3":"t19","5":"t23","7":"t21","9":"t24"},"c":{"0":[{"i":"t16","r":1}],"1":[],"2":[],"3":[{"i":"t19","r":1,"t":{"4":"t20"},"c":{"4":[{"i":"t21","r":1,"t":{"1":"t22"},"c":{"1":[]}}]}}],"5":[],"7":[],"9":[]}},{"t":{"0":"t12"},"c":{"0":[{"i":"t12","r":1,"t":{"5":"t13"},"c":{"5":[{"i":"t13","r":1,"t":{"1":"t14"},"c":{"1":[{"i":"t15","r":1}]}}]}}]}},{"t":{"0":"t29"},"c":{"0":[{"i":"t29","r":1,"t":{"6":"t30","8":"t31"},"c":{"6":[],"8":[{"i":"t31","r":5,"t":{"0":"t32","1":"t33","2":"t37"},"c":{"0":[],"1":[{"i":"t33","r":2,"t":{"0":"t34"},"c":{"0":[{"i":"t34","r":1,"t":{"1":"t35","2":"t36"},"c":{"1":[{"i":"t35","r":1}],"2":[]}}]}}],"2":[]}}]}}]}},{"t":{"0":"t45","1":"t51"},"c":{"0":[{"i":"t45","r":7,"t":{"0":"t46","1":"t47","2":"t48","3":"t49"},"c":{"0":[],"1":[{"i":"t47","r":1}],"2":[],"3":[{"i":"t49","r":2,"t":{"0":"t50"},"c":{"0":[{"i":"t51","r":1,"t":{"0":"t52"},"c":{"0":[]}}]}}]}}],"1":[]}},{"t":{"0":"t57"},"c":{"0":[]}},{"t":{"0":"t58"},"c":{"0":[]}},{"t":{"1":"t59","2":"t81","4":"t61","6":"t82"},"c":{"1":[{"i":"t59","r":21,"t":{"0":"t60"},"c":{"0":[{"i":"t61","r":20,"t":{"0":"t62","1":"t63","2":"t64","3":"t65","4":"t66","5":"t67","6":"t68","7":"t69","8":"t70","9":"t71","10":"t72","11":"t73","12":"t74","13":"t75","14":"t76","15":"t77","16":"t78","17":"t79","18":"t80"},"c":{"0":[],"1":[{"i":"t63","r":1}],"2":[],"3":[],"4":[],"5":[],"6":[],"7":[],"8":[],"9":[],"10":[],"11":[],"12":[],"13":[],"14":[],"15":[],"16":[],"17":[],"18":[]}}]}}],"2":[],"4":[],"6":[]}},{"t":{"0":"t56"},"c":{"0":[{"i":"t56","r":1}]}},{"t":{"0":"t105"},"c":{"0":[{"i":"t105","r":2,"t":{"0":"t106","3":"t107"},"c":{"0":[],"3":[{"i":"t107","r":1,"t":{"1":"t108","2":"t109"},"c":{"1":[],"2":[{"i":"t109","r":1}]},"x":5}]}}]}},{"t":{"0":"t86"},"c":{"0":[]}},{"t":{"0":"t88","1":"t89"},"c":{"0":[],"1":[]}},{"n":{"2":"0fn3"}},{"t":{"0":"t45","1":"t51"},"c":{"0":[{"i":"t45","r":8,"t":{"0":"t46","1":"t47","2":"t48","3":"t49"},"c":{"0":[{"i":"t46","r":1}],"1":[],"2":[],"3":[{"i":"t49","r":3,"t":{"0":"t50"},"c":{"0":[{"i":"t51","r":2,"t":{"0":"t52"},"c":{"0":[{"i":"t52","r":1,"t":{"2":"t91"},"c":{"2":[{"i":"t91","r":1,"x":14}]}}]}}]}}]}}],"1":[]}},{"n":{"1":"0f2"},"t":{"1":"t90","2":"t92"},"c":{"1":[{"i":"t90","r":1}],"2":[]}},{"t":{"1":"t25","2":"t26","4":"t27","8":"t28","12":"t39","13":"t40","14":"t41","15":"t93","16":"t94","17":"t15"},"c":{"1":[],"2":[{"i":"t26","r":1}],"4":[],"8":[{"i":"t28","r":1,"t":{"4":"t38"},"c":{"4":[]}}],"12":[{"i":"t39","r":1}],"13":[],"14":[{"i":"t41","r":1,"t":{"2":"t42","3":"t43","4":"t44","7":"t53","9":"t54","10":"t55","13":"t83","14":"t84","17":"t85"},"c":{"2":[{"i":"t42","r":1}],"3":[],"4":[],"7":[],"9":[],"10":[],"13":[{"i":"t83","r":1}],"14":[{"i":"t84","r":1}],"17":[{"i":"t85","r":1,"t":{"2":"t87"},"c":{"2":[]}}]}}],"15":[],"16":[],"17":[]}},{"t":{"0":"t96","1":"t97","2":"t98","3":"t99","4":"t100","5":"t101","6":"t102","7":"t103"},"c":{"0":[],"1":[{"i":"t97","r":1}],"2":[],"3":[],"4":[],"5":[],"6":[],"7":[]}},{"c":{"4":[],"6":[]},"t":{"6":"t104"}},{"t":{"1":"t0","6":"t95"},"c":{"1":[{"i":"t0","r":1}],"5":[{"i":"c143105183","r":1}],"6":[{"i":"t95","r":1}]}}]}</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a16eae6a8a4786e1',t:'MTc4MzM0MTY2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body></html>
